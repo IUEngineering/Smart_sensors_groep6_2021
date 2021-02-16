@@ -1,2 +1,3 @@
-part,	manf name,	digikey,	price,	HvA,	nmb on pcb,	total price,		HvA 1 = niet in voorraad,
-SI7202-B-04-IBR, SI7202-B-04-IBR,	336-5653-1-ND,	€ 0.85,	1,	1,	€ 0.85,		HvA 0 = wel op voorraad,
+part, manf name,  digikey,  farnell,	price,	HvA,	nmb on pcb,	total price,		HvA 1 = niet in voorraad,
+SI7202-B-04-IBR, SI7202-B-04-IBR,,	336-5653-1-ND,	€ 0.85,	1,	1,	€ 0.85,		HvA 0 = wel op voorraad,
+Terminal Block, CTBP5000/3, , 2527548,  € 0.35, 0,  13, € 0.00, ,
