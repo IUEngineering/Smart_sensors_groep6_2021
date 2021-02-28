@@ -149,6 +149,12 @@ ISR(PORTF_INT0_vect){
 
 // ISR for the keypad on port D
 ISR(PORTD_INT0_vect){
+<<<<<<< Updated upstream
+=======
+	cli();
+	uint8_t key;
+	int8_t door;
+>>>>>>> Stashed changes
 	// wake up
 	// check what key is pressed
 	// add key press to password check
@@ -156,17 +162,30 @@ ISR(PORTD_INT0_vect){
 	// correct open door and show green led
 	// incorrect show red led. (maybe in a later revision buz a buzzer)
 	// go back to idle mode
+	sei();
 }
 
 // ISR for the keypad on port E
 ISR(PORTE_INT0_vect){
+<<<<<<< Updated upstream
+=======
+	cli();
+	uint8_t key;
+	int8_t door;
+>>>>>>> Stashed changes
 	// wake up
 	// check what key is pressed
 	// add key press to password check
 	// if password check is filled compare with password
 	// correct open door and show green led
+<<<<<<< Updated upstream
 	// incorrect show red led. (maybe in a later revision buz a buzzer)
 	// go back to idle
+=======
+	open_door(door);
+	// go back to idle mode
+	sei();
+>>>>>>> Stashed changes
 }
 
 // ISR for last person out button
