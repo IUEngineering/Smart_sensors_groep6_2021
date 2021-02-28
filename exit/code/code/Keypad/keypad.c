@@ -160,7 +160,7 @@ uint8_t what_key_PD(void){
 			break;
 			
 		default:
-			return 20;
+			return fault;
 			break;
 	}
 }
@@ -198,13 +198,14 @@ uint8_t what_key_PE(void){
 		//green_on;
 		//_delay_ms(500);
 		//green_off;
-		//} else {
+	//} else {
 		//red_on;
 		//_delay_ms(500);
 		//red_off;
 	//}
 	//return 200;
 //}
+
 uint8_t password_check(uint8_t key){
 	static uint8_t password_compare[password_length];// = {1,1,1,1,1};
 	static uint8_t n;
@@ -288,18 +289,20 @@ uint8_t password_check(uint8_t key){
 }
 
 void open_door(uint8_t val){
-	//if (val == 1) {
-		//// unlock door
-		//PORTB.OUTSET = PIN0_bm;
-		//// green led on
-		//green_on;
-		//// start timer
-		//TCD0.CTRLA = TC_CLKSEL_DIV1024_gc;
-		//
-	//} else if (val == 0) {
-		//// red led on
-		//red_on;
-		//// start timer
-		//TCD0.CTRLA = TC_CLKSEL_DIV1024_gc;
-	//}
+	if (val == 1) {
+		// unlock door
+		PORTB.OUTSET = PIN0_bm;
+		// green led on
+		green_on;
+		// start timer
+		TCD0.CTRLA = TC_CLKSEL_DIV1024_gc;
+		
+	} else if (val == 0) {
+		asm("nop");
+	} else {
+		// red led on
+		red_on;
+		// start timer
+		TCD0.CTRLA = TC_CLKSEL_DIV1024_gc;
+	}
 }

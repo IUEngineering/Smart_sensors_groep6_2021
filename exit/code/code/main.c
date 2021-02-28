@@ -31,10 +31,17 @@ int main(void)
 	// init keypad
 	// init hall effect sensor
 	// init sleep mode
+	init_clock();
+	init_keypad();
+	init_LED();
     init_nrf();
 	
 	// enable global interrupts
 	// enter idle mode
+	
+	red_on;
+	_delay_ms(500);
+	red_off;
 	
     while (1) 
     {
