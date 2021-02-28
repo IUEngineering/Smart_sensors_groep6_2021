@@ -47,7 +47,7 @@ uint8_t password[password_length] = {1, 1, 1, 1, 1};
 
 void init_keypad(void){
 	
-	//set pin PA1 as input
+	//set pin PA1 as input 
 	PORTA.DIRCLR = PIN1_bm;
 	
 	//set pin PB0 as output
