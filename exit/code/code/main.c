@@ -39,6 +39,9 @@ int main(void)
 	// enable global interrupts
 	// enter idle mode
 	
+	PMIC.CTRL |= PMIC_LOLVLEN_bm | PMIC_MEDLVLEN_bm;
+	sei();
+	
 	red_on;
 	_delay_ms(500);
 	red_off;
@@ -120,6 +123,9 @@ ISR(PORTD_INT0_vect){
 	cli();
 	uint8_t key;
 	int8_t door;
+	red_on;
+	_delay_ms(250);
+	red_off;
 	// wake up
 	// check what key is pressed
 	key	= what_key_PD();

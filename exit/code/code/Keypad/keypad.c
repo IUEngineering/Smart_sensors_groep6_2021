@@ -7,7 +7,7 @@
 #define F_CPU 32000000
 
 #include "keypad.h"
-#include <stdint.h>
+#include <stdint.h> 
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
@@ -192,77 +192,77 @@ uint8_t what_key_PE(void){
 	}
 }
 
-//uint8_t password_check(uint8_t key){
-	//if (key == ok)
-	//{
-		//green_on;
-		//_delay_ms(500);
-		//green_off;
-	//} else {
-		//red_on;
-		//_delay_ms(500);
-		//red_off;
-	//}
-	//return 200;
-//}
-
 uint8_t password_check(uint8_t key){
-	static uint8_t password_compare[password_length];// = {1,1,1,1,1};
-	static uint8_t n;
-	
-	// check the password if the ok key is pressed
-	if (key == ok){
-		for (uint8_t i = 0; i < 5; i++)
-		{
-			green_on;
-			_delay_ms(20);
-			green_off;
-			_delay_ms(20);
-		}
+	if (key == ok)
+	{
+		green_on;
 		_delay_ms(500);
-		//if (!(n == (password_length))) return 0;
-		if (n >= password_length)
-		{
-			n = 0;
-			for (uint8_t i = 0; i < 5; i++)
-			{
-				red_on;
-				_delay_ms(200);
-				red_off;
-				_delay_ms(200);
-			}
-				
-			return 0;
-		}
-		
-		for (uint8_t i = 0; i < password_length; i++)
-		{
-			if (!(password[i] == password_compare[i])) 
-			{
-				return 0;
-			}
-		}
-		for (uint8_t i = 0; i < 5; i++)
-		{
-			green_on;
-			_delay_ms(200);
-			green_off;
-			_delay_ms(200);
-		}
-		n = 0;
-		return 1;
+		green_off;
+		} else {
+		red_on;
+		_delay_ms(500);
+		red_off;
 	}
-	
-	// reset the password if the reset key is pressed
-	if (key == reset)
-	{
-		n = 0;
-		return 0;
-	}
-	
-	if (n == password_length)
-	{
-		n = 0;
+	return 200;
+}
+
+//uint8_t password_check(uint8_t key){
+	//static uint8_t password_compare[password_length];// = {1,1,1,1,1};
+	//static uint8_t n;
+	//
+	//// check the password if the ok key is pressed
+	//if (key == ok){
+		//for (uint8_t i = 0; i < 5; i++)
+		//{
+			//green_on;
+			//_delay_ms(20);
+			//green_off;
+			//_delay_ms(20);
+		//}
+		//_delay_ms(500);
+		////if (!(n == (password_length))) return 0;
+		//if (n >= password_length)
+		//{
+			//n = 0;
+			//for (uint8_t i = 0; i < 5; i++)
+			//{
+				//red_on;
+				//_delay_ms(200);
+				//red_off;
+				//_delay_ms(200);
+			//}
+				//
+			//return 0;
+		//}
+		//
+		//for (uint8_t i = 0; i < password_length; i++)
+		//{
+			//if (!(password[i] == password_compare[i])) 
+			//{
+				//return 0;
+			//}
+		//}
+		//for (uint8_t i = 0; i < 5; i++)
+		//{
+			//green_on;
+			//_delay_ms(200);
+			//green_off;
+			//_delay_ms(200);
+		//}
+		//n = 0;
+		//return 1;
+	//}
+	//
+	//// reset the password if the reset key is pressed
+	//if (key == reset)
+	//{
+		//n = 0;
+		//return 0;
+	//}
+	//
+	//if (n == password_length)
+	//{
+		//n = 0;
 		//for (uint8_t i = 0; i < 5; i++)
 		//{
 			//red_on;
@@ -273,20 +273,20 @@ uint8_t password_check(uint8_t key){
 			//_delay_ms(200);
 		//}
 		//return 0;
-	}
-	
-	// add number in password checker
-	password_compare[n] = key;
-	n++;
-	for (uint8_t i = 0; i < 2; i++)
-	{
-		green_on;
-		_delay_ms(200);
-		green_off;
-		_delay_ms(200);
-	}
-	return 2;
-}
+	//}
+	//
+	//// add number in password checker
+	//password_compare[n] = key;
+	//n++;
+	//for (uint8_t i = 0; i < 2; i++)
+	//{
+		//green_on;
+		//_delay_ms(200);
+		//green_off;
+		//_delay_ms(200);
+	//}
+	//return 2;
+//}
 
 void open_door(uint8_t val){
 	if (val == 1) {
