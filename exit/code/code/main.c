@@ -163,3 +163,7 @@ ISR(PORTA_INT0_vect){
 	// make state 0
 	state = 0;
 }
+
+ISR(TCD0_OVF_vect){
+	red_off;
+}
