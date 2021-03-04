@@ -18,6 +18,7 @@
 *	The Xmega256A3U will be in a sleep mode until one of its buttons is pressed or the door is opened.
 *	<TABLE>
 *	<TR><TH COLSPAN=2> Keypad smart Sensors 2021   </TH><TH> Xmegaboard-V2 </TH></TR>
+*	<TR><TH> switch </TH<TH> schematic name </TH><TH> connected to port: </TH></TR>
 *	<TR><TD> 1   </TD><TD> KP_1		</TD><TD> PD0           </TD></TR>
 *	<TR><TD> 2   </TD><TD> KP_2		</TD><TD> PD1           </TD></TR>
 *	<TR><TD> 3   </TD><TD> KP_3		</TD><TD> PD2           </TD></TR>
@@ -192,33 +193,12 @@ uint8_t what_key_PE(void){
 	}
 }
 
-//uint8_t password_check(uint8_t key){
-	//if (key == ok)
-	//{
-		//green_on;
-		//_delay_ms(500);
-		//green_off;
-		//} else {
-		//red_on;
-		//_delay_ms(500);
-		//red_off;
-	//}
-	//return 0;
-//}
-
 uint8_t password_check(uint8_t key){
 	static uint8_t password_compare[password_length] = {0,1,1,1,1};
 	static uint8_t n;
 	
 	// check the password if the ok key is pressed
 	if (key == ok){
-		for (uint8_t i = 0; i < 5; i++)
-		{
-			green_on;
-			_delay_ms(20);
-			green_off;
-			_delay_ms(20);
-		}
 		
 		for (uint8_t i = 0; i < password_length; i++)
 		{
@@ -228,13 +208,6 @@ uint8_t password_check(uint8_t key){
 			}
 		}
 		
-		for (uint8_t i = 0; i < 5; i++)
-		{
-			green_on;
-			_delay_ms(200);
-			green_off;
-			_delay_ms(200);
-		}
 		n = 0;
 		return correct_password;
 	}
@@ -264,14 +237,7 @@ uint8_t password_check(uint8_t key){
 	// add number in password checker
 	password_compare[n] = key;
 	n++;
-	for (uint8_t i = 0; i < 2; i++)
-	{
-		green_on;
-		_delay_ms(200);
-		green_off;
-		_delay_ms(200);
-	}
-	return 2;
+	return added_to_input;
 }
 
 void open_door(uint8_t val){
@@ -279,12 +245,20 @@ void open_door(uint8_t val){
 		// unlock door
 		PORTB.OUTSET = PIN0_bm;
 		// green led on
+		_delay_ms(100);
 		green_on;
 		// start timer
 		TCD0.CTRLA = TC_CLKSEL_DIV1024_gc;
 		
 	} else if (val == added_to_input) {
-		asm("nop");
+			for(uint8_t i = 0; i < 2; i++){
+					red_on;
+					green_on;
+					_delay_ms(50);
+					red_off;
+					green_off;
+					_delay_ms(50);
+			}
 	} else {
 		// red led on
 		red_on;

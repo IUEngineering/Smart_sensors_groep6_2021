@@ -126,12 +126,6 @@ ISR(PORTD_INT0_vect){
 	// wake up
 	// check what key is pressed
 	key	= what_key_PD();
-	
-	red_on;
-	green_on;
-	_delay_ms(100);
-	red_off;
-	green_off;
 	// add key press to password check
 	door = password_check(key);
 	// if password check is filled compare with password
@@ -150,12 +144,6 @@ ISR(PORTE_INT0_vect){
 	// wake up
 	// check what key is pressed
 	key = what_key_PE();
-	
-	//red_on;
-	//green_on;
-	//_delay_ms(100);
-	//red_off;
-	//green_off;
 	// add key press to password check
 	door = password_check(key);
 	// if password check is filled compare with password
@@ -174,6 +162,7 @@ ISR(PORTA_INT0_vect){
 }
 
 ISR(TCD0_OVF_vect){
+	PORTB.OUTCLR = PIN0_bm;
 	red_off;
 	green_off;
 }
