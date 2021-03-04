@@ -193,6 +193,15 @@ uint8_t what_key_PE(void){
 	}
 }
 
+void reset_password(uint8_t *password_compare){
+	uint8_t wrong_default_password_compare[password_length] = {0,1,1,1,1};
+	for (uint8_t i = 0; i < password_length; i++)
+	{
+		*password_compare = wrong_default_password_compare[i];
+		password_compare++;
+	}
+}
+
 uint8_t password_check(uint8_t key){
 	static uint8_t password_compare[password_length] = {0,1,1,1,1};
 	static uint8_t n;
@@ -208,6 +217,7 @@ uint8_t password_check(uint8_t key){
 			}
 		}
 		
+		reset_password(password_compare);
 		n = 0;
 		return correct_password;
 	}
