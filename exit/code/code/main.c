@@ -123,12 +123,15 @@ ISR(PORTD_INT0_vect){
 	cli();
 	uint8_t key;
 	int8_t door;
-	red_on;
-	_delay_ms(250);
-	red_off;
 	// wake up
 	// check what key is pressed
 	key	= what_key_PD();
+	
+	red_on;
+	green_on;
+	_delay_ms(100);
+	red_off;
+	green_off;
 	// add key press to password check
 	door = password_check(key);
 	// if password check is filled compare with password
@@ -147,6 +150,12 @@ ISR(PORTE_INT0_vect){
 	// wake up
 	// check what key is pressed
 	key = what_key_PE();
+	
+	//red_on;
+	//green_on;
+	//_delay_ms(100);
+	//red_off;
+	//green_off;
 	// add key press to password check
 	door = password_check(key);
 	// if password check is filled compare with password

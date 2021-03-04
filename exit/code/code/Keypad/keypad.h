@@ -14,6 +14,9 @@
 #define ok 10
 #define reset 11 
 #define fault 13
+#define wrong_password 2
+#define correct_password 1
+#define added_to_input 0
 
 
 #define green_on TCF0.CCABUF = 250
