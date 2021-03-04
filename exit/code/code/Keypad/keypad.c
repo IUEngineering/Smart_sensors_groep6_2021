@@ -203,7 +203,7 @@ uint8_t password_check(uint8_t key){
 		_delay_ms(500);
 		red_off;
 	}
-	return 200;
+	return 1;
 }
 
 //uint8_t password_check(uint8_t key){

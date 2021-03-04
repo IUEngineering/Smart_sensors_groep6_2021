@@ -166,4 +166,5 @@ ISR(PORTA_INT0_vect){
 
 ISR(TCD0_OVF_vect){
 	red_off;
+	green_off;
 }
