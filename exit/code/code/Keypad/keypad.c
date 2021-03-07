@@ -250,7 +250,7 @@ uint8_t password_check(uint8_t key){
 	return added_to_input;
 }
 
-void open_door(uint8_t val){
+uint8_t open_door(uint8_t val){
 	if (val == correct_password) {
 		// unlock door
 		PORTB.OUTSET = PIN0_bm;
@@ -259,7 +259,7 @@ void open_door(uint8_t val){
 		green_on;
 		// start timer
 		TCD0.CTRLA = TC_CLKSEL_DIV1024_gc;
-		
+		return 1;
 	} else if (val == added_to_input) {
 			for(uint8_t i = 0; i < 2; i++){
 					red_on;
@@ -275,4 +275,5 @@ void open_door(uint8_t val){
 		// start timer
 		TCD0.CTRLA = TC_CLKSEL_DIV1024_gc;
 	}
+	return 0;
 }

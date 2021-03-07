@@ -23,7 +23,7 @@ uint8_t  pipe[5] = {0x48, 0x76, 0x41, 0x30, 0x31};       //!< pipe address "HvA0
 
 // state 0 means that no one is home
 // state 1 means that there is someone home
-int state = 1;
+unsigned char state = 1;
 
 int main(void)
 {
@@ -36,9 +36,7 @@ int main(void)
 	init_LED();
     init_nrf();
 	
-	// enable global interrupts
-	// enter idle mode
-	
+	// enable global interrupts	
 	PMIC.CTRL |= PMIC_LOLVLEN_bm | PMIC_MEDLVLEN_bm;
 	sei();
 	
@@ -52,17 +50,19 @@ int main(void)
 		{
 			case 0:
 				//send over NRF
-				//enter idle mode
+				nrfWrite(&state, sizeof(uint8_t));
 				break;
 				
 			case 1:
 				//send over NRF
-				//enter idle mode
+				nrfWrite(&state, sizeof(uint8_t));
 				break;
+				
 			default:
 				state = 1;
 				break;
 		}
+		//enter idle mode
 	}
 }
 
@@ -146,11 +146,10 @@ ISR(PORTE_INT0_vect){
 	key = what_key_PE();
 	// add key press to password check
 	door = password_check(key);
-	// if password check is filled compare with password
-	// correct open door and show green led
-	// incorrect show red led. (maybe in a later revision buz a buzzer)
-	// go back to idle
-	open_door(door);
+	
+	// see if state changed
+	if (open_door(door) == 1) state = 1;
+ 
 	// go back to idle mode
 	sei();
 }

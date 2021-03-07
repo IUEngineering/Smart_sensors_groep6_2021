@@ -34,5 +34,5 @@ uint8_t what_key_PD(void);
 uint8_t what_key_PE(void);
 void reset_password(uint8_t* password_compare);
 uint8_t password_check(uint8_t key);
-void open_door(uint8_t val);
+uint8_t open_door(uint8_t val);
 #endif /* KEYPAD_H_ */
