@@ -9,8 +9,7 @@
 #ifndef SLEEP_H_
 #define SLEEP_H_
 
-
-
+void init_sleep(void);
 
 
 #endif /* SLEEP_H_ */
