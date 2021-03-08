@@ -4,7 +4,7 @@
  * Created: 8-3-2021 11:03:44
  *  Author: tycho
  */ 
-
+#include <avr/sleep.h>
 
 #ifndef SLEEP_H_
 #define SLEEP_H_

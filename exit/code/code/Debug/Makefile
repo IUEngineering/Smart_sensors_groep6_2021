@@ -35,6 +35,7 @@ LINKER_SCRIPT_DEP:=
 SUBDIRS :=  \
 ../Keypad/ \
 ../CLK \
+../Sleep \
 ../NRF/
 
 
@@ -44,7 +45,8 @@ C_SRCS +=  \
 ../Keypad/keypad.c \
 ../main.c \
 ../NRF/nrf24L01.c \
-../NRF/nrf24spiXM2.c
+../NRF/nrf24spiXM2.c \
+../Sleep/sleep.c
 
 
 PREPROCESSING_SRCS += 
@@ -58,28 +60,32 @@ CLK/clock.o \
 Keypad/keypad.o \
 main.o \
 NRF/nrf24L01.o \
-NRF/nrf24spiXM2.o
+NRF/nrf24spiXM2.o \
+Sleep/sleep.o
 
 OBJS_AS_ARGS +=  \
 CLK/clock.o \
 Keypad/keypad.o \
 main.o \
 NRF/nrf24L01.o \
-NRF/nrf24spiXM2.o
+NRF/nrf24spiXM2.o \
+Sleep/sleep.o
 
 C_DEPS +=  \
 CLK/clock.d \
 Keypad/keypad.d \
 main.d \
 NRF/nrf24L01.d \
-NRF/nrf24spiXM2.d
+NRF/nrf24spiXM2.d \
+Sleep/sleep.d
 
 C_DEPS_AS_ARGS +=  \
 CLK/clock.d \
 Keypad/keypad.d \
 main.d \
 NRF/nrf24L01.d \
-NRF/nrf24spiXM2.d
+NRF/nrf24spiXM2.d \
+Sleep/sleep.d
 
 OUTPUT_FILE_PATH +=code.elf
 
@@ -124,6 +130,13 @@ NRF/nrf24L01.o: ../NRF/nrf24L01.c
 	
 
 NRF/nrf24spiXM2.o: ../NRF/nrf24spiXM2.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.1.68\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atxmega256a3u -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.1.68\gcc\dev\atxmega256a3u" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Sleep/sleep.o: ../Sleep/sleep.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.1.68\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atxmega256a3u -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.1.68\gcc\dev\atxmega256a3u" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

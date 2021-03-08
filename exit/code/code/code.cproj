@@ -147,10 +147,17 @@
     <Compile Include="NRF\nrf24spiXM2.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Sleep\sleep.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Sleep\sleep.h">
+      <SubType>compile</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Keypad\" />
     <Folder Include="CLK" />
+    <Folder Include="Sleep" />
     <Folder Include="NRF\" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
