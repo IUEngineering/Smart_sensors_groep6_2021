@@ -9,6 +9,9 @@
 #ifndef SLEEP_H_
 #define SLEEP_H_
 
+#define SLEEP_ENABLE SLEEP.CTRL = sleep_enable;
+#define SLEEP_DISABLE SLEEP.CTRL = sleep_disable;
+
 void init_sleep(void);
 
 
