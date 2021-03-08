@@ -37,6 +37,10 @@ int main(void)
 	init_LED();
     init_nrf();
 	init_sleep();
+	
+	// enable sleep
+	SLEEP_ENABLE;
+	
 	// enable global interrupts	
 	PMIC.CTRL |= PMIC_LOLVLEN_bm | PMIC_MEDLVLEN_bm;
 	sei();
