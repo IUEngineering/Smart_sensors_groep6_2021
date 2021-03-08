@@ -12,17 +12,19 @@
 #include <util/delay.h>
 #include "NRF/nrf24spiXM2.h"
 #include "NRF/nrf24L01.h"
+#include "Keypad/keypad.h"
+#include "CLK/clock.h"
+#include "Sleep/sleep.h"
 
 
 void init_nrf(void);
-void init_keypad(void);
 
 
 uint8_t  pipe[5] = {0x48, 0x76, 0x41, 0x30, 0x31};       //!< pipe address "HvA01"
 
 // state 0 means that no one is home
 // state 1 means that there is someone home
-int state = 1;
+unsigned char state = 1;
 
 int main(void)
 {
@@ -30,10 +32,22 @@ int main(void)
 	// init keypad
 	// init hall effect sensor
 	// init sleep mode
+	init_clock();
+	init_keypad();
+	init_LED();
     init_nrf();
+	init_sleep();
 	
-	// enable global interrupts
-	// enter idle mode
+	// enable sleep
+	SLEEP_ENABLE;
+	
+	// enable global interrupts	
+	PMIC.CTRL |= PMIC_LOLVLEN_bm | PMIC_MEDLVLEN_bm;
+	sei();
+	
+	red_on;
+	_delay_ms(500);
+	red_off;
 	
     while (1) 
     {
@@ -41,17 +55,20 @@ int main(void)
 		{
 			case 0:
 				//send over NRF
-				//enter idle mode
+				nrfWrite(&state, sizeof(uint8_t));
 				break;
 				
 			case 1:
 				//send over NRF
-				//enter idle mode
+				nrfWrite(&state, sizeof(uint8_t));
 				break;
+				
 			default:
 				state = 1;
 				break;
 		}
+		//enter idle mode
+		SLEEP;
 	}
 }
 
@@ -99,46 +116,6 @@ void init_nrf(void)
 *	<TR><TD> LPO </TD><TD> LP_OUT	</TD><TD> PA1           </TD></TR>	
 *	</TABLE>
 */
-void init_keypad(void){
-	
-	//set pin PA1 as 
-	PORTA.DIRCLR = PIN1_bm;
-	
-	//set port D as input.
-	PORTD.DIRCLR = 0xFF;
-	
-	//set E0, E1, E2, E3 as inputs.
-	PORTE.DIRCLR = 0x0F;
-	
-	//for port A
-	//configure input sense on falling edge
-	PORTA.PIN1CTRL = PORT_ISC_FALLING_gc;
-	
-	//for ports D and E
-	//use internal pull ups 
-	//configure input sense on falling edge
-	PORTD.PIN0CTRL = PORT_OPC_PULLUP_gc | PORT_ISC_FALLING_gc;
-	PORTD.PIN1CTRL = PORT_OPC_PULLUP_gc | PORT_ISC_FALLING_gc;
-	PORTD.PIN2CTRL = PORT_OPC_PULLUP_gc | PORT_ISC_FALLING_gc;
-	PORTD.PIN3CTRL = PORT_OPC_PULLUP_gc | PORT_ISC_FALLING_gc;
-	PORTD.PIN4CTRL = PORT_OPC_PULLUP_gc | PORT_ISC_FALLING_gc;
-	PORTD.PIN5CTRL = PORT_OPC_PULLUP_gc | PORT_ISC_FALLING_gc;
-	PORTD.PIN6CTRL = PORT_OPC_PULLUP_gc | PORT_ISC_FALLING_gc;
-	PORTD.PIN7CTRL = PORT_OPC_PULLUP_gc | PORT_ISC_FALLING_gc;
-	PORTE.PIN0CTRL = PORT_OPC_PULLUP_gc | PORT_ISC_FALLING_gc;
-	PORTE.PIN1CTRL = PORT_OPC_PULLUP_gc | PORT_ISC_FALLING_gc;
-	PORTE.PIN2CTRL = PORT_OPC_PULLUP_gc | PORT_ISC_FALLING_gc;
-	PORTE.PIN3CTRL = PORT_OPC_PULLUP_gc | PORT_ISC_FALLING_gc;
-	
-	//configure PA1 interrupt 0
-	PORTA.INT0MASK = PIN1_bm;
-	
-	//configure port D interrupt 0
-	PORTD.INT0MASK = 0xFF;
-	
-	//configure port E interrupt 0
-	PORTE.INT0MASK = 0x0F;
-}
 
 // ISR for the NRF
 ISR(PORTF_INT0_vect){
@@ -149,28 +126,48 @@ ISR(PORTF_INT0_vect){
 
 // ISR for the keypad on port D
 ISR(PORTD_INT0_vect){
+	cli();
+	uint8_t key;
+	int8_t door;
 	// wake up
 	// check what key is pressed
+	key	= what_key_PD();
 	// add key press to password check
+	door = password_check(key);
 	// if password check is filled compare with password
 	// correct open door and show green led
 	// incorrect show red led. (maybe in a later revision buz a buzzer)
+	open_door(door);
 	// go back to idle mode
+	sei();
 }
 
 // ISR for the keypad on port E
 ISR(PORTE_INT0_vect){
+	cli();
+	uint8_t key;
+	int8_t door;
 	// wake up
 	// check what key is pressed
+	key = what_key_PE();
 	// add key press to password check
-	// if password check is filled compare with password
-	// correct open door and show green led
-	// incorrect show red led. (maybe in a later revision buz a buzzer)
-	// go back to idle
+	door = password_check(key);
+	
+	// see if state changed
+	if (open_door(door) == 1) state = 1;
+ 
+	// go back to idle mode
+	sei();
 }
 
 // ISR for last person out button
 ISR(PORTA_INT0_vect){
 	// make state 0
 	state = 0;
+}
+
+ISR(TCD0_OVF_vect){
+	PORTB.OUTCLR = PIN0_bm;
+	red_off;
+	green_off;
 }
