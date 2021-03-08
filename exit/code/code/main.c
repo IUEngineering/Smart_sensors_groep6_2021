@@ -14,6 +14,7 @@
 #include "NRF/nrf24L01.h"
 #include "Keypad/keypad.h"
 #include "CLK/clock.h"
+#include "Sleep/sleep.h"
 
 
 void init_nrf(void);
