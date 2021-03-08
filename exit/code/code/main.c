@@ -68,6 +68,7 @@ int main(void)
 				break;
 		}
 		//enter idle mode
+		SLEEP;
 	}
 }
 
