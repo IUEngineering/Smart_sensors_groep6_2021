@@ -36,7 +36,7 @@ int main(void)
 	init_keypad();
 	init_LED();
     init_nrf();
-	
+	init_sleep();
 	// enable global interrupts	
 	PMIC.CTRL |= PMIC_LOLVLEN_bm | PMIC_MEDLVLEN_bm;
 	sei();
