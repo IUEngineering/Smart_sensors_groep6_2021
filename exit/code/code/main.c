@@ -15,6 +15,7 @@
 #include "Keypad/keypad.h"
 #include "CLK/clock.h"
 #include "Sleep/sleep.h"
+#include "Hall_effect/hall_effect.h"
 
 
 void init_nrf(void);
@@ -37,6 +38,7 @@ int main(void)
 	init_LED();
     init_nrf();
 	init_sleep();
+	init_hall_effect();
 	
 	// enable sleep
 	SLEEP_ENABLE;
