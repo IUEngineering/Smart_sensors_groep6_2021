@@ -294,7 +294,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xcf0
+.text           0x00000000      0xd2e
  *(.vectors)
  .vectors       0x00000000      0x1fc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega256a3u/avrxmega6/crtatxmega256a3u.o
                 0x00000000                __vector_default
@@ -522,97 +522,97 @@ END GROUP
                 0x000006da       0x64 main.o
                 0x000006da                __vector_43
  .text.__vector_66
-                0x0000073e       0x18 main.o
+                0x0000073e       0x56 main.o
                 0x0000073e                __vector_66
  .text.__vector_77
-                0x00000756       0x3a main.o
-                0x00000756                __vector_77
+                0x00000794       0x3a main.o
+                0x00000794                __vector_77
  .text.nrfReadRegister
-                0x00000790       0x24 NRF/nrf24L01.o
-                0x00000790                nrfReadRegister
+                0x000007ce       0x24 NRF/nrf24L01.o
+                0x000007ce                nrfReadRegister
  .text.nrfWriteRegisterMulti
-                0x000007b4       0x5c NRF/nrf24L01.o
-                0x000007b4                nrfWriteRegisterMulti
+                0x000007f2       0x5c NRF/nrf24L01.o
+                0x000007f2                nrfWriteRegisterMulti
  .text.nrfWriteRegister
-                0x00000810       0x34 NRF/nrf24L01.o
-                0x00000810                nrfWriteRegister
+                0x0000084e       0x34 NRF/nrf24L01.o
+                0x0000084e                nrfWriteRegister
  .text.nrfWritePayload
-                0x00000844       0xa6 NRF/nrf24L01.o
-                0x00000844                nrfWritePayload
+                0x00000882       0xa6 NRF/nrf24L01.o
+                0x00000882                nrfWritePayload
  .text.nrfFlushRx
-                0x000008ea       0x1e NRF/nrf24L01.o
-                0x000008ea                nrfFlushRx
+                0x00000928       0x1e NRF/nrf24L01.o
+                0x00000928                nrfFlushRx
  .text.nrfFlushTx
-                0x00000908       0x1e NRF/nrf24L01.o
-                0x00000908                nrfFlushTx
+                0x00000946       0x1e NRF/nrf24L01.o
+                0x00000946                nrfFlushTx
  .text.nrfStartWrite
-                0x00000926       0x6e NRF/nrf24L01.o
-                0x00000926                nrfStartWrite
+                0x00000964       0x6e NRF/nrf24L01.o
+                0x00000964                nrfStartWrite
  .text.nrfOpenWritingPipe
-                0x00000994       0x3c NRF/nrf24L01.o
-                0x00000994                nrfOpenWritingPipe
+                0x000009d2       0x3c NRF/nrf24L01.o
+                0x000009d2                nrfOpenWritingPipe
  .text.nrfOpenReadingPipe
-                0x000009d0       0x8c NRF/nrf24L01.o
-                0x000009d0                nrfOpenReadingPipe
+                0x00000a0e       0x8c NRF/nrf24L01.o
+                0x00000a0e                nrfOpenReadingPipe
  .text.nrfToggleFeatures
-                0x00000a5c       0x24 NRF/nrf24L01.o
-                0x00000a5c                nrfToggleFeatures
+                0x00000a9a       0x24 NRF/nrf24L01.o
+                0x00000a9a                nrfToggleFeatures
  .text.nrfEnableDynamicPayloads
-                0x00000a80       0x46 NRF/nrf24L01.o
-                0x00000a80                nrfEnableDynamicPayloads
+                0x00000abe       0x46 NRF/nrf24L01.o
+                0x00000abe                nrfEnableDynamicPayloads
  .text.nrfSetChannel
-                0x00000ac6       0x18 NRF/nrf24L01.o
-                0x00000ac6                nrfSetChannel
+                0x00000b04       0x18 NRF/nrf24L01.o
+                0x00000b04                nrfSetChannel
  .text.nrfSetAutoAck
-                0x00000ade       0x18 NRF/nrf24L01.o
-                0x00000ade                nrfSetAutoAck
+                0x00000b1c       0x18 NRF/nrf24L01.o
+                0x00000b1c                nrfSetAutoAck
  .text.nrfSetPALevel
-                0x00000af6       0x1c NRF/nrf24L01.o
-                0x00000af6                nrfSetPALevel
+                0x00000b34       0x1c NRF/nrf24L01.o
+                0x00000b34                nrfSetPALevel
  .text.nrfSetDataRate
-                0x00000b12       0x2c NRF/nrf24L01.o
-                0x00000b12                nrfSetDataRate
+                0x00000b50       0x2c NRF/nrf24L01.o
+                0x00000b50                nrfSetDataRate
  .text.nrfSetCRCLength
-                0x00000b3e       0x1c NRF/nrf24L01.o
-                0x00000b3e                nrfSetCRCLength
+                0x00000b7c       0x1c NRF/nrf24L01.o
+                0x00000b7c                nrfSetCRCLength
  .text.nrfSetRetries
-                0x00000b5a        0xa NRF/nrf24L01.o
-                0x00000b5a                nrfSetRetries
+                0x00000b98        0xa NRF/nrf24L01.o
+                0x00000b98                nrfSetRetries
  .text.nrfGetMaxTimeout
-                0x00000b64       0x36 NRF/nrf24L01.o
-                0x00000b64                nrfGetMaxTimeout
+                0x00000ba2       0x36 NRF/nrf24L01.o
+                0x00000ba2                nrfGetMaxTimeout
  .text.nrfWaitForAck
-                0x00000b9a       0x62 NRF/nrf24L01.o
-                0x00000b9a                nrfWaitForAck
+                0x00000bd8       0x62 NRF/nrf24L01.o
+                0x00000bd8                nrfWaitForAck
  .text.nrfWrite
-                0x00000bfc        0xc NRF/nrf24L01.o
-                0x00000bfc                nrfWrite
+                0x00000c3a        0xc NRF/nrf24L01.o
+                0x00000c3a                nrfWrite
  .text.nrfClearInterruptBits
-                0x00000c08        0xa NRF/nrf24L01.o
-                0x00000c08                nrfClearInterruptBits
+                0x00000c46        0xa NRF/nrf24L01.o
+                0x00000c46                nrfClearInterruptBits
  .text.nrfBegin
-                0x00000c12       0x52 NRF/nrf24L01.o
-                0x00000c12                nrfBegin
+                0x00000c50       0x52 NRF/nrf24L01.o
+                0x00000c50                nrfBegin
  .text.nrfspiInit
-                0x00000c64       0x34 NRF/nrf24spiXM2.o
-                0x00000c64                nrfspiInit
+                0x00000ca2       0x34 NRF/nrf24spiXM2.o
+                0x00000ca2                nrfspiInit
  .text.nrfspiTransfer
-                0x00000c98       0x1c NRF/nrf24spiXM2.o
-                0x00000c98                nrfspiTransfer
+                0x00000cd6       0x1c NRF/nrf24spiXM2.o
+                0x00000cd6                nrfspiTransfer
  .text.init_sleep
-                0x00000cb4        0x8 Sleep/sleep.o
-                0x00000cb4                init_sleep
+                0x00000cf2        0x8 Sleep/sleep.o
+                0x00000cf2                init_sleep
  .text.libgcc.mul
-                0x00000cbc       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_umulhisi3.o)
-                0x00000cbc                __umulhisi3
+                0x00000cfa       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_umulhisi3.o)
+                0x00000cfa                __umulhisi3
  .text.avr-libc
-                0x00000cda       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(memcpy.o)
-                0x00000cda                memcpy
-                0x00000cec                . = ALIGN (0x2)
+                0x00000d18       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(memcpy.o)
+                0x00000d18                memcpy
+                0x00000d2a                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000cec        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_exit.o)
-                0x00000cec                _exit
-                0x00000cec                exit
+ .fini9         0x00000d2a        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_exit.o)
+                0x00000d2a                _exit
+                0x00000d2a                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -631,11 +631,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000cec        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_exit.o)
+ .fini0         0x00000d2a        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000cf0                _etext = .
+                0x00000d2e                _etext = .
 
-.data           0x00802000       0x2a load address 0x00000cf0
+.data           0x00802000       0x2a load address 0x00000d2e
                 0x00802000                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -685,8 +685,8 @@ END GROUP
                 0x00802030                dynamic_payloads_enabled
  *(COMMON)
                 0x00802031                PROVIDE (__bss_end, .)
-                0x00000cf0                __data_load_start = LOADADDR (.data)
-                0x00000d1a                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000d2e                __data_load_start = LOADADDR (.data)
+                0x00000d58                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00802031        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -780,44 +780,44 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x7728
+.debug_info     0x00000000     0x7762
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000     0x3409 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega256a3u/avrxmega6/crtatxmega256a3u.o
  .debug_info    0x00003409      0x3a6 CLK/clock.o
  .debug_info    0x000037af      0xd8c Keypad/keypad.o
- .debug_info    0x0000453b      0xf00 main.o
- .debug_info    0x0000543b     0x1ef9 NRF/nrf24L01.o
- .debug_info    0x00007334      0x301 NRF/nrf24spiXM2.o
- .debug_info    0x00007635       0xf3 Sleep/sleep.o
+ .debug_info    0x0000453b      0xf3a main.o
+ .debug_info    0x00005475     0x1ef9 NRF/nrf24L01.o
+ .debug_info    0x0000736e      0x301 NRF/nrf24spiXM2.o
+ .debug_info    0x0000766f       0xf3 Sleep/sleep.o
 
-.debug_abbrev   0x00000000     0x3be9
+.debug_abbrev   0x00000000     0x3bf8
  *(.debug_abbrev)
  .debug_abbrev  0x00000000     0x3148 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega256a3u/avrxmega6/crtatxmega256a3u.o
  .debug_abbrev  0x00003148       0x9d CLK/clock.o
  .debug_abbrev  0x000031e5      0x2f0 Keypad/keypad.o
- .debug_abbrev  0x000034d5      0x23f main.o
- .debug_abbrev  0x00003714      0x363 NRF/nrf24L01.o
- .debug_abbrev  0x00003a77       0xd5 NRF/nrf24spiXM2.o
- .debug_abbrev  0x00003b4c       0x9d Sleep/sleep.o
+ .debug_abbrev  0x000034d5      0x24e main.o
+ .debug_abbrev  0x00003723      0x363 NRF/nrf24L01.o
+ .debug_abbrev  0x00003a86       0xd5 NRF/nrf24spiXM2.o
+ .debug_abbrev  0x00003b5b       0x9d Sleep/sleep.o
 
-.debug_line     0x00000000     0x1d13
+.debug_line     0x00000000     0x1d29
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x39d C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega256a3u/avrxmega6/crtatxmega256a3u.o
  .debug_line    0x0000039d      0x2a1 CLK/clock.o
  .debug_line    0x0000063e      0x50b Keypad/keypad.o
- .debug_line    0x00000b49      0x37a main.o
- .debug_line    0x00000ec3      0xbcd NRF/nrf24L01.o
- .debug_line    0x00001a90      0x17c NRF/nrf24spiXM2.o
- .debug_line    0x00001c0c      0x107 Sleep/sleep.o
+ .debug_line    0x00000b49      0x390 main.o
+ .debug_line    0x00000ed9      0xbcd NRF/nrf24L01.o
+ .debug_line    0x00001aa6      0x17c NRF/nrf24spiXM2.o
+ .debug_line    0x00001c22      0x107 Sleep/sleep.o
 
-.debug_frame    0x00000000      0x820
+.debug_frame    0x00000000      0x838
  *(.debug_frame)
  .debug_frame   0x00000000       0x84 CLK/clock.o
  .debug_frame   0x00000084       0xc0 Keypad/keypad.o
- .debug_frame   0x00000144      0x148 main.o
- .debug_frame   0x0000028c      0x53c NRF/nrf24L01.o
- .debug_frame   0x000007c8       0x34 NRF/nrf24spiXM2.o
- .debug_frame   0x000007fc       0x24 Sleep/sleep.o
+ .debug_frame   0x00000144      0x160 main.o
+ .debug_frame   0x000002a4      0x53c NRF/nrf24L01.o
+ .debug_frame   0x000007e0       0x34 NRF/nrf24spiXM2.o
+ .debug_frame   0x00000814       0x24 Sleep/sleep.o
 
 .debug_str      0x00000000     0x3c50
  *(.debug_str)
@@ -835,12 +835,12 @@ END GROUP
  .debug_str     0x00003bc5       0x8b Sleep/sleep.o
                                 0x284 (size before relaxing)
 
-.debug_loc      0x00000000     0x2235
+.debug_loc      0x00000000     0x22be
  *(.debug_loc)
  .debug_loc     0x00000000      0x561 Keypad/keypad.o
- .debug_loc     0x00000561      0x2de main.o
- .debug_loc     0x0000083f     0x19c9 NRF/nrf24L01.o
- .debug_loc     0x00002208       0x2d NRF/nrf24spiXM2.o
+ .debug_loc     0x00000561      0x367 main.o
+ .debug_loc     0x000008c8     0x19c9 NRF/nrf24L01.o
+ .debug_loc     0x00002291       0x2d NRF/nrf24spiXM2.o
 
 .debug_macinfo
  *(.debug_macinfo)

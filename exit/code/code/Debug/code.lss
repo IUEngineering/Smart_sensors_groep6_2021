@@ -3,31 +3,31 @@ code.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000cf0  00000000  00000000  00000094  2**1
+  0 .text         00000d2e  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         0000002a  00802000  00000cf0  00000d84  2**0
+  1 .data         0000002a  00802000  00000d2e  00000dc2  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000007  0080202a  0080202a  00000dae  2**0
+  2 .bss          00000007  0080202a  0080202a  00000dec  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000dae  2**0
+  3 .comment      00000030  00000000  00000000  00000dec  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000de0  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000e1c  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 000002e8  00000000  00000000  00000e20  2**0
+  5 .debug_aranges 000002e8  00000000  00000000  00000e5c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00007728  00000000  00000000  00001108  2**0
+  6 .debug_info   00007762  00000000  00000000  00001144  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00003be9  00000000  00000000  00008830  2**0
+  7 .debug_abbrev 00003bf8  00000000  00000000  000088a6  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00001d13  00000000  00000000  0000c419  2**0
+  8 .debug_line   00001d29  00000000  00000000  0000c49e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000820  00000000  00000000  0000e12c  2**2
+  9 .debug_frame  00000838  00000000  00000000  0000e1c8  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00003c50  00000000  00000000  0000e94c  2**0
+ 10 .debug_str    00003c50  00000000  00000000  0000ea00  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00002235  00000000  00000000  0001259c  2**0
+ 11 .debug_loc    000022be  00000000  00000000  00012650  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000318  00000000  00000000  000147d1  2**0
+ 12 .debug_ranges 00000318  00000000  00000000  0001490e  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -110,7 +110,7 @@ Disassembly of section .text:
  128:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
  12c:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
  130:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
- 134:	0c 94 ab 03 	jmp	0x756	; 0x756 <__vector_77>
+ 134:	0c 94 ca 03 	jmp	0x794	; 0x794 <__vector_77>
  138:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
  13c:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
  140:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
@@ -175,8 +175,8 @@ Disassembly of section .text:
  20c:	10 e2       	ldi	r17, 0x20	; 32
  20e:	a0 e0       	ldi	r26, 0x00	; 0
  210:	b0 e2       	ldi	r27, 0x20	; 32
- 212:	e0 ef       	ldi	r30, 0xF0	; 240
- 214:	fc e0       	ldi	r31, 0x0C	; 12
+ 212:	ee e2       	ldi	r30, 0x2E	; 46
+ 214:	fd e0       	ldi	r31, 0x0D	; 13
  216:	00 e0       	ldi	r16, 0x00	; 0
  218:	0b bf       	out	0x3b, r16	; 59
  21a:	02 c0       	rjmp	.+4      	; 0x220 <__do_copy_data+0x14>
@@ -200,7 +200,7 @@ Disassembly of section .text:
  232:	b2 07       	cpc	r27, r18
  234:	e1 f7       	brne	.-8      	; 0x22e <.do_clear_bss_loop>
  236:	0e 94 fa 02 	call	0x5f4	; 0x5f4 <main>
- 23a:	0c 94 76 06 	jmp	0xcec	; 0xcec <_exit>
+ 23a:	0c 94 95 06 	jmp	0xd2a	; 0xd2a <_exit>
 
 0000023e <__bad_interrupt>:
  23e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -277,8 +277,8 @@ void init_keypad(void){
 	
 	//set pin PB0 as output
 	PORTB.DIRSET = PIN0_bm;
- 292:	41 e0       	ldi	r20, 0x01	; 1
- 294:	40 93 21 06 	sts	0x0621, r20	; 0x800621 <__TEXT_REGION_LENGTH__+0x700621>
+ 292:	81 e0       	ldi	r24, 0x01	; 1
+ 294:	80 93 21 06 	sts	0x0621, r24	; 0x800621 <__TEXT_REGION_LENGTH__+0x700621>
 	
 	//set port D as input
 	PORTD.DIRCLR = 0xFF;
@@ -298,14 +298,14 @@ void init_keypad(void){
 	
 	//for port A
 	//configure input sense on falling edge
-	PORTA.PIN1CTRL = PORT_ISC_BOTHEDGES_gc;
- 2ac:	19 8a       	std	Y+17, r1	; 0x11
+	PORTA.PIN1CTRL = PORT_OPC_PULLUP_gc | PORT_ISC_FALLING_gc;
+ 2ac:	8a e1       	ldi	r24, 0x1A	; 26
+ 2ae:	89 8b       	std	Y+17, r24	; 0x11
 	
 	//for port D 
 	//use internal pull ups
 	//configure input sense on falling edge
 	PORTD.PIN0CTRL = PORT_OPC_PULLUP_gc | PORT_ISC_FALLING_gc;
- 2ae:	8a e1       	ldi	r24, 0x1A	; 26
  2b0:	50 96       	adiw	r26, 0x10	; 16
  2b2:	8c 93       	st	X, r24
  2b4:	50 97       	sbiw	r26, 0x10	; 16
@@ -361,8 +361,8 @@ void init_keypad(void){
 	//configure PA1 interrupt 0
 	PORTA.INT0MASK = PIN1_bm;
  2f0:	9a 87       	std	Y+10, r25	; 0x0a
-	PORTA.INTCTRL = PORT_INT0LVL_LO_gc;
- 2f2:	49 87       	std	Y+9, r20	; 0x09
+	PORTA.INTCTRL = PORT_INT0LVL_MED_gc;
+ 2f2:	99 87       	std	Y+9, r25	; 0x09
 	
 	//configure port D interrupt 0
 	PORTD.INT0MASK = 0xFF;
@@ -972,49 +972,49 @@ uint8_t open_door(uint8_t val){
 void init_nrf(void)
 {
 	nrfspiInit();                                        // Initialize SPI
- 5a2:	0e 94 32 06 	call	0xc64	; 0xc64 <nrfspiInit>
+ 5a2:	0e 94 51 06 	call	0xca2	; 0xca2 <nrfspiInit>
 	nrfBegin();                                          // Initialize radio module
- 5a6:	0e 94 09 06 	call	0xc12	; 0xc12 <nrfBegin>
+ 5a6:	0e 94 28 06 	call	0xc50	; 0xc50 <nrfBegin>
 
 	nrfSetRetries(NRF_SETUP_ARD_1000US_gc,               // Auto Retransmission Delay: 1000 us
  5aa:	68 e0       	ldi	r22, 0x08	; 8
  5ac:	80 e3       	ldi	r24, 0x30	; 48
- 5ae:	0e 94 ad 05 	call	0xb5a	; 0xb5a <nrfSetRetries>
+ 5ae:	0e 94 cc 05 	call	0xb98	; 0xb98 <nrfSetRetries>
 	NRF_SETUP_ARC_8RETRANSMIT_gc);						 // Auto Retransmission Count: 8 retries
 	nrfSetPALevel(NRF_RF_SETUP_PWR_6DBM_gc);             // Power Control: -6 dBm
  5b2:	84 e0       	ldi	r24, 0x04	; 4
- 5b4:	0e 94 7b 05 	call	0xaf6	; 0xaf6 <nrfSetPALevel>
+ 5b4:	0e 94 9a 05 	call	0xb34	; 0xb34 <nrfSetPALevel>
 	nrfSetDataRate(NRF_RF_SETUP_RF_DR_250K_gc);          // Data Rate: 250 Kbps
  5b8:	80 e2       	ldi	r24, 0x20	; 32
- 5ba:	0e 94 89 05 	call	0xb12	; 0xb12 <nrfSetDataRate>
+ 5ba:	0e 94 a8 05 	call	0xb50	; 0xb50 <nrfSetDataRate>
 	nrfSetCRCLength(NRF_CONFIG_CRC_16_gc);               // CRC Check
  5be:	8c e0       	ldi	r24, 0x0C	; 12
- 5c0:	0e 94 9f 05 	call	0xb3e	; 0xb3e <nrfSetCRCLength>
+ 5c0:	0e 94 be 05 	call	0xb7c	; 0xb7c <nrfSetCRCLength>
 	nrfSetChannel(54);                                   // Channel: 54
  5c4:	86 e3       	ldi	r24, 0x36	; 54
- 5c6:	0e 94 63 05 	call	0xac6	; 0xac6 <nrfSetChannel>
+ 5c6:	0e 94 82 05 	call	0xb04	; 0xb04 <nrfSetChannel>
 	nrfSetAutoAck(1);                                    // Auto Acknowledge on
  5ca:	81 e0       	ldi	r24, 0x01	; 1
- 5cc:	0e 94 6f 05 	call	0xade	; 0xade <nrfSetAutoAck>
+ 5cc:	0e 94 8e 05 	call	0xb1c	; 0xb1c <nrfSetAutoAck>
 	nrfEnableDynamicPayloads();                          // Enable Dynamic Payloads
- 5d0:	0e 94 40 05 	call	0xa80	; 0xa80 <nrfEnableDynamicPayloads>
+ 5d0:	0e 94 5f 05 	call	0xabe	; 0xabe <nrfEnableDynamicPayloads>
 
 	nrfClearInterruptBits();                             // Clear interrupt bits
- 5d4:	0e 94 04 06 	call	0xc08	; 0xc08 <nrfClearInterruptBits>
+ 5d4:	0e 94 23 06 	call	0xc46	; 0xc46 <nrfClearInterruptBits>
 	nrfFlushRx();                                        // Flush fifo's
- 5d8:	0e 94 75 04 	call	0x8ea	; 0x8ea <nrfFlushRx>
+ 5d8:	0e 94 94 04 	call	0x928	; 0x928 <nrfFlushRx>
 	nrfFlushTx();
- 5dc:	0e 94 84 04 	call	0x908	; 0x908 <nrfFlushTx>
+ 5dc:	0e 94 a3 04 	call	0x946	; 0x946 <nrfFlushTx>
 
 	nrfOpenWritingPipe(pipe);                            // Pipe for sending
  5e0:	8b e0       	ldi	r24, 0x0B	; 11
  5e2:	90 e2       	ldi	r25, 0x20	; 32
- 5e4:	0e 94 ca 04 	call	0x994	; 0x994 <nrfOpenWritingPipe>
+ 5e4:	0e 94 e9 04 	call	0x9d2	; 0x9d2 <nrfOpenWritingPipe>
 	nrfOpenReadingPipe(0, pipe);                         // Necessary for acknowledge
  5e8:	6b e0       	ldi	r22, 0x0B	; 11
  5ea:	70 e2       	ldi	r23, 0x20	; 32
  5ec:	80 e0       	ldi	r24, 0x00	; 0
- 5ee:	0e 94 e8 04 	call	0x9d0	; 0x9d0 <nrfOpenReadingPipe>
+ 5ee:	0e 94 07 05 	call	0xa0e	; 0xa0e <nrfOpenReadingPipe>
  5f2:	08 95       	ret
 
 000005f4 <main>:
@@ -1037,7 +1037,7 @@ void inline init_clock(void) {
     init_nrf();
  600:	0e 94 d1 02 	call	0x5a2	; 0x5a2 <init_nrf>
 	init_sleep();
- 604:	0e 94 5a 06 	call	0xcb4	; 0xcb4 <init_sleep>
+ 604:	0e 94 79 06 	call	0xcf2	; 0xcf2 <init_sleep>
 	
 	// enable sleep
 	SLEEP_ENABLE;
@@ -1085,23 +1085,26 @@ void inline init_clock(void) {
  646:	39 f0       	breq	.+14     	; 0x656 <main+0x62>
  648:	0c c0       	rjmp	.+24     	; 0x662 <main+0x6e>
 		{
+			//no one is home
 			case 0:
 				//send over NRF
 				nrfWrite(&state, sizeof(uint8_t));
  64a:	61 e0       	ldi	r22, 0x01	; 1
  64c:	8a e0       	ldi	r24, 0x0A	; 10
  64e:	90 e2       	ldi	r25, 0x20	; 32
- 650:	0e 94 fe 05 	call	0xbfc	; 0xbfc <nrfWrite>
+ 650:	0e 94 1d 06 	call	0xc3a	; 0xc3a <nrfWrite>
 				break;
  654:	f3 cf       	rjmp	.-26     	; 0x63c <main+0x48>
+				red_off;
 				
+			//people are home
 			case 1:
 				//send over NRF
 				nrfWrite(&state, sizeof(uint8_t));
  656:	61 e0       	ldi	r22, 0x01	; 1
  658:	8a e0       	ldi	r24, 0x0A	; 10
  65a:	90 e2       	ldi	r25, 0x20	; 32
- 65c:	0e 94 fe 05 	call	0xbfc	; 0xbfc <nrfWrite>
+ 65c:	0e 94 1d 06 	call	0xc3a	; 0xc3a <nrfWrite>
 				break;
  660:	ed cf       	rjmp	.-38     	; 0x63c <main+0x48>
 				
@@ -1272,869 +1275,903 @@ ISR(PORTA_INT0_vect){
  742:	0f b6       	in	r0, 0x3f	; 63
  744:	0f 92       	push	r0
  746:	11 24       	eor	r1, r1
-	// make state 0
-	state = 0;
- 748:	10 92 0a 20 	sts	0x200A, r1	; 0x80200a <state>
-}
- 74c:	0f 90       	pop	r0
- 74e:	0f be       	out	0x3f, r0	; 63
- 750:	0f 90       	pop	r0
- 752:	1f 90       	pop	r1
- 754:	18 95       	reti
-
-00000756 <__vector_77>:
-
-ISR(TCD0_OVF_vect){
- 756:	1f 92       	push	r1
- 758:	0f 92       	push	r0
- 75a:	0f b6       	in	r0, 0x3f	; 63
- 75c:	0f 92       	push	r0
- 75e:	11 24       	eor	r1, r1
- 760:	0b b6       	in	r0, 0x3b	; 59
- 762:	0f 92       	push	r0
- 764:	8f 93       	push	r24
- 766:	ef 93       	push	r30
- 768:	ff 93       	push	r31
-	PORTB.OUTCLR = PIN0_bm;
- 76a:	81 e0       	ldi	r24, 0x01	; 1
- 76c:	80 93 26 06 	sts	0x0626, r24	; 0x800626 <__TEXT_REGION_LENGTH__+0x700626>
+ 748:	0b b6       	in	r0, 0x3b	; 59
+ 74a:	0f 92       	push	r0
+ 74c:	2f 93       	push	r18
+ 74e:	8f 93       	push	r24
+ 750:	9f 93       	push	r25
+ 752:	ef 93       	push	r30
+ 754:	ff 93       	push	r31
+	red_on;
+ 756:	e0 e0       	ldi	r30, 0x00	; 0
+ 758:	fb e0       	ldi	r31, 0x0B	; 11
+ 75a:	8a ef       	ldi	r24, 0xFA	; 250
+ 75c:	90 e0       	ldi	r25, 0x00	; 0
+ 75e:	82 af       	std	Z+58, r24	; 0x3a
+ 760:	93 af       	std	Z+59, r25	; 0x3b
+ 762:	2f ef       	ldi	r18, 0xFF	; 255
+ 764:	83 ed       	ldi	r24, 0xD3	; 211
+ 766:	90 e3       	ldi	r25, 0x30	; 48
+ 768:	21 50       	subi	r18, 0x01	; 1
+ 76a:	80 40       	sbci	r24, 0x00	; 0
+ 76c:	90 40       	sbci	r25, 0x00	; 0
+ 76e:	e1 f7       	brne	.-8      	; 0x768 <__vector_66+0x2a>
+ 770:	00 c0       	rjmp	.+0      	; 0x772 <__vector_66+0x34>
+ 772:	00 00       	nop
+	_delay_ms(500);
 	red_off;
- 770:	e0 e0       	ldi	r30, 0x00	; 0
- 772:	fb e0       	ldi	r31, 0x0B	; 11
  774:	12 ae       	std	Z+58, r1	; 0x3a
  776:	13 ae       	std	Z+59, r1	; 0x3b
-	green_off;
- 778:	10 ae       	std	Z+56, r1	; 0x38
- 77a:	11 ae       	std	Z+57, r1	; 0x39
+	// make state 0
+	state = 0;
+ 778:	10 92 0a 20 	sts	0x200A, r1	; 0x80200a <state>
+}
  77c:	ff 91       	pop	r31
  77e:	ef 91       	pop	r30
- 780:	8f 91       	pop	r24
- 782:	0f 90       	pop	r0
- 784:	0b be       	out	0x3b, r0	; 59
+ 780:	9f 91       	pop	r25
+ 782:	8f 91       	pop	r24
+ 784:	2f 91       	pop	r18
  786:	0f 90       	pop	r0
- 788:	0f be       	out	0x3f, r0	; 63
+ 788:	0b be       	out	0x3b, r0	; 59
  78a:	0f 90       	pop	r0
- 78c:	1f 90       	pop	r1
- 78e:	18 95       	reti
+ 78c:	0f be       	out	0x3f, r0	; 63
+ 78e:	0f 90       	pop	r0
+ 790:	1f 90       	pop	r1
+ 792:	18 95       	reti
 
-00000790 <nrfReadRegister>:
+00000794 <__vector_77>:
+
+ISR(TCD0_OVF_vect){
+ 794:	1f 92       	push	r1
+ 796:	0f 92       	push	r0
+ 798:	0f b6       	in	r0, 0x3f	; 63
+ 79a:	0f 92       	push	r0
+ 79c:	11 24       	eor	r1, r1
+ 79e:	0b b6       	in	r0, 0x3b	; 59
+ 7a0:	0f 92       	push	r0
+ 7a2:	8f 93       	push	r24
+ 7a4:	ef 93       	push	r30
+ 7a6:	ff 93       	push	r31
+	PORTB.OUTCLR = PIN0_bm;
+ 7a8:	81 e0       	ldi	r24, 0x01	; 1
+ 7aa:	80 93 26 06 	sts	0x0626, r24	; 0x800626 <__TEXT_REGION_LENGTH__+0x700626>
+	red_off;
+ 7ae:	e0 e0       	ldi	r30, 0x00	; 0
+ 7b0:	fb e0       	ldi	r31, 0x0B	; 11
+ 7b2:	12 ae       	std	Z+58, r1	; 0x3a
+ 7b4:	13 ae       	std	Z+59, r1	; 0x3b
+	green_off;
+ 7b6:	10 ae       	std	Z+56, r1	; 0x38
+ 7b8:	11 ae       	std	Z+57, r1	; 0x39
+ 7ba:	ff 91       	pop	r31
+ 7bc:	ef 91       	pop	r30
+ 7be:	8f 91       	pop	r24
+ 7c0:	0f 90       	pop	r0
+ 7c2:	0b be       	out	0x3b, r0	; 59
+ 7c4:	0f 90       	pop	r0
+ 7c6:	0f be       	out	0x3f, r0	; 63
+ 7c8:	0f 90       	pop	r0
+ 7ca:	1f 90       	pop	r1
+ 7cc:	18 95       	reti
+
+000007ce <nrfReadRegister>:
  * \brief   Disbale CRC
  */
 void nrfDisableCRC( void )
 {
   uint8_t config = nrfReadRegister(REG_CONFIG) & ~NRF_CONFIG_EN_CRC_bm;
   nrfWriteRegister( REG_CONFIG, config );
- 790:	1f 93       	push	r17
- 792:	cf 93       	push	r28
- 794:	df 93       	push	r29
- 796:	c0 ea       	ldi	r28, 0xA0	; 160
- 798:	d6 e0       	ldi	r29, 0x06	; 6
- 79a:	10 e2       	ldi	r17, 0x20	; 32
- 79c:	1e 83       	std	Y+6, r17	; 0x06
- 79e:	8f 71       	andi	r24, 0x1F	; 31
- 7a0:	0e 94 4c 06 	call	0xc98	; 0xc98 <nrfspiTransfer>
- 7a4:	8f ef       	ldi	r24, 0xFF	; 255
- 7a6:	0e 94 4c 06 	call	0xc98	; 0xc98 <nrfspiTransfer>
- 7aa:	1d 83       	std	Y+5, r17	; 0x05
- 7ac:	df 91       	pop	r29
- 7ae:	cf 91       	pop	r28
- 7b0:	1f 91       	pop	r17
- 7b2:	08 95       	ret
+ 7ce:	1f 93       	push	r17
+ 7d0:	cf 93       	push	r28
+ 7d2:	df 93       	push	r29
+ 7d4:	c0 ea       	ldi	r28, 0xA0	; 160
+ 7d6:	d6 e0       	ldi	r29, 0x06	; 6
+ 7d8:	10 e2       	ldi	r17, 0x20	; 32
+ 7da:	1e 83       	std	Y+6, r17	; 0x06
+ 7dc:	8f 71       	andi	r24, 0x1F	; 31
+ 7de:	0e 94 6b 06 	call	0xcd6	; 0xcd6 <nrfspiTransfer>
+ 7e2:	8f ef       	ldi	r24, 0xFF	; 255
+ 7e4:	0e 94 6b 06 	call	0xcd6	; 0xcd6 <nrfspiTransfer>
+ 7e8:	1d 83       	std	Y+5, r17	; 0x05
+ 7ea:	df 91       	pop	r29
+ 7ec:	cf 91       	pop	r28
+ 7ee:	1f 91       	pop	r17
+ 7f0:	08 95       	ret
 
-000007b4 <nrfWriteRegisterMulti>:
- 7b4:	df 92       	push	r13
- 7b6:	ef 92       	push	r14
- 7b8:	ff 92       	push	r15
- 7ba:	0f 93       	push	r16
- 7bc:	1f 93       	push	r17
- 7be:	cf 93       	push	r28
- 7c0:	df 93       	push	r29
- 7c2:	7b 01       	movw	r14, r22
- 7c4:	c4 2f       	mov	r28, r20
- 7c6:	90 e2       	ldi	r25, 0x20	; 32
- 7c8:	90 93 a6 06 	sts	0x06A6, r25	; 0x8006a6 <__TEXT_REGION_LENGTH__+0x7006a6>
- 7cc:	8f 71       	andi	r24, 0x1F	; 31
- 7ce:	80 62       	ori	r24, 0x20	; 32
- 7d0:	0e 94 4c 06 	call	0xc98	; 0xc98 <nrfspiTransfer>
- 7d4:	d8 2e       	mov	r13, r24
- 7d6:	8f ef       	ldi	r24, 0xFF	; 255
- 7d8:	8c 0f       	add	r24, r28
- 7da:	cc 23       	and	r28, r28
- 7dc:	69 f0       	breq	.+26     	; 0x7f8 <nrfWriteRegisterMulti+0x44>
- 7de:	e7 01       	movw	r28, r14
- 7e0:	08 2f       	mov	r16, r24
- 7e2:	10 e0       	ldi	r17, 0x00	; 0
- 7e4:	0f 5f       	subi	r16, 0xFF	; 255
- 7e6:	1f 4f       	sbci	r17, 0xFF	; 255
- 7e8:	0e 0d       	add	r16, r14
- 7ea:	1f 1d       	adc	r17, r15
- 7ec:	89 91       	ld	r24, Y+
- 7ee:	0e 94 4c 06 	call	0xc98	; 0xc98 <nrfspiTransfer>
- 7f2:	c0 17       	cp	r28, r16
- 7f4:	d1 07       	cpc	r29, r17
- 7f6:	d1 f7       	brne	.-12     	; 0x7ec <nrfWriteRegisterMulti+0x38>
- 7f8:	80 e2       	ldi	r24, 0x20	; 32
- 7fa:	80 93 a5 06 	sts	0x06A5, r24	; 0x8006a5 <__TEXT_REGION_LENGTH__+0x7006a5>
- 7fe:	8d 2d       	mov	r24, r13
- 800:	df 91       	pop	r29
- 802:	cf 91       	pop	r28
- 804:	1f 91       	pop	r17
- 806:	0f 91       	pop	r16
- 808:	ff 90       	pop	r15
- 80a:	ef 90       	pop	r14
- 80c:	df 90       	pop	r13
- 80e:	08 95       	ret
+000007f2 <nrfWriteRegisterMulti>:
+ 7f2:	df 92       	push	r13
+ 7f4:	ef 92       	push	r14
+ 7f6:	ff 92       	push	r15
+ 7f8:	0f 93       	push	r16
+ 7fa:	1f 93       	push	r17
+ 7fc:	cf 93       	push	r28
+ 7fe:	df 93       	push	r29
+ 800:	7b 01       	movw	r14, r22
+ 802:	c4 2f       	mov	r28, r20
+ 804:	90 e2       	ldi	r25, 0x20	; 32
+ 806:	90 93 a6 06 	sts	0x06A6, r25	; 0x8006a6 <__TEXT_REGION_LENGTH__+0x7006a6>
+ 80a:	8f 71       	andi	r24, 0x1F	; 31
+ 80c:	80 62       	ori	r24, 0x20	; 32
+ 80e:	0e 94 6b 06 	call	0xcd6	; 0xcd6 <nrfspiTransfer>
+ 812:	d8 2e       	mov	r13, r24
+ 814:	8f ef       	ldi	r24, 0xFF	; 255
+ 816:	8c 0f       	add	r24, r28
+ 818:	cc 23       	and	r28, r28
+ 81a:	69 f0       	breq	.+26     	; 0x836 <nrfWriteRegisterMulti+0x44>
+ 81c:	e7 01       	movw	r28, r14
+ 81e:	08 2f       	mov	r16, r24
+ 820:	10 e0       	ldi	r17, 0x00	; 0
+ 822:	0f 5f       	subi	r16, 0xFF	; 255
+ 824:	1f 4f       	sbci	r17, 0xFF	; 255
+ 826:	0e 0d       	add	r16, r14
+ 828:	1f 1d       	adc	r17, r15
+ 82a:	89 91       	ld	r24, Y+
+ 82c:	0e 94 6b 06 	call	0xcd6	; 0xcd6 <nrfspiTransfer>
+ 830:	c0 17       	cp	r28, r16
+ 832:	d1 07       	cpc	r29, r17
+ 834:	d1 f7       	brne	.-12     	; 0x82a <nrfWriteRegisterMulti+0x38>
+ 836:	80 e2       	ldi	r24, 0x20	; 32
+ 838:	80 93 a5 06 	sts	0x06A5, r24	; 0x8006a5 <__TEXT_REGION_LENGTH__+0x7006a5>
+ 83c:	8d 2d       	mov	r24, r13
+ 83e:	df 91       	pop	r29
+ 840:	cf 91       	pop	r28
+ 842:	1f 91       	pop	r17
+ 844:	0f 91       	pop	r16
+ 846:	ff 90       	pop	r15
+ 848:	ef 90       	pop	r14
+ 84a:	df 90       	pop	r13
+ 84c:	08 95       	ret
 
-00000810 <nrfWriteRegister>:
- 810:	ff 92       	push	r15
- 812:	0f 93       	push	r16
- 814:	1f 93       	push	r17
- 816:	cf 93       	push	r28
- 818:	df 93       	push	r29
- 81a:	f6 2e       	mov	r15, r22
- 81c:	c0 ea       	ldi	r28, 0xA0	; 160
- 81e:	d6 e0       	ldi	r29, 0x06	; 6
- 820:	10 e2       	ldi	r17, 0x20	; 32
- 822:	1e 83       	std	Y+6, r17	; 0x06
- 824:	8f 71       	andi	r24, 0x1F	; 31
- 826:	80 62       	ori	r24, 0x20	; 32
- 828:	0e 94 4c 06 	call	0xc98	; 0xc98 <nrfspiTransfer>
- 82c:	08 2f       	mov	r16, r24
- 82e:	8f 2d       	mov	r24, r15
- 830:	0e 94 4c 06 	call	0xc98	; 0xc98 <nrfspiTransfer>
- 834:	1d 83       	std	Y+5, r17	; 0x05
- 836:	80 2f       	mov	r24, r16
- 838:	df 91       	pop	r29
- 83a:	cf 91       	pop	r28
- 83c:	1f 91       	pop	r17
- 83e:	0f 91       	pop	r16
- 840:	ff 90       	pop	r15
- 842:	08 95       	ret
+0000084e <nrfWriteRegister>:
+ 84e:	ff 92       	push	r15
+ 850:	0f 93       	push	r16
+ 852:	1f 93       	push	r17
+ 854:	cf 93       	push	r28
+ 856:	df 93       	push	r29
+ 858:	f6 2e       	mov	r15, r22
+ 85a:	c0 ea       	ldi	r28, 0xA0	; 160
+ 85c:	d6 e0       	ldi	r29, 0x06	; 6
+ 85e:	10 e2       	ldi	r17, 0x20	; 32
+ 860:	1e 83       	std	Y+6, r17	; 0x06
+ 862:	8f 71       	andi	r24, 0x1F	; 31
+ 864:	80 62       	ori	r24, 0x20	; 32
+ 866:	0e 94 6b 06 	call	0xcd6	; 0xcd6 <nrfspiTransfer>
+ 86a:	08 2f       	mov	r16, r24
+ 86c:	8f 2d       	mov	r24, r15
+ 86e:	0e 94 6b 06 	call	0xcd6	; 0xcd6 <nrfspiTransfer>
+ 872:	1d 83       	std	Y+5, r17	; 0x05
+ 874:	80 2f       	mov	r24, r16
+ 876:	df 91       	pop	r29
+ 878:	cf 91       	pop	r28
+ 87a:	1f 91       	pop	r17
+ 87c:	0f 91       	pop	r16
+ 87e:	ff 90       	pop	r15
+ 880:	08 95       	ret
 
-00000844 <nrfWritePayload>:
- 844:	bf 92       	push	r11
- 846:	cf 92       	push	r12
- 848:	df 92       	push	r13
- 84a:	ef 92       	push	r14
- 84c:	ff 92       	push	r15
- 84e:	0f 93       	push	r16
- 850:	1f 93       	push	r17
- 852:	cf 93       	push	r28
- 854:	df 93       	push	r29
- 856:	6c 01       	movw	r12, r24
- 858:	84 2f       	mov	r24, r20
- 85a:	c0 91 11 20 	lds	r28, 0x2011	; 0x802011 <fixed_payload_size>
- 85e:	1c 2f       	mov	r17, r28
- 860:	6c 17       	cp	r22, r28
- 862:	08 f4       	brcc	.+2      	; 0x866 <nrfWritePayload+0x22>
- 864:	16 2f       	mov	r17, r22
- 866:	90 91 30 20 	lds	r25, 0x2030	; 0x802030 <dynamic_payloads_enabled>
- 86a:	91 11       	cpse	r25, r1
- 86c:	25 c0       	rjmp	.+74     	; 0x8b8 <nrfWritePayload+0x74>
- 86e:	0c 2f       	mov	r16, r28
- 870:	01 1b       	sub	r16, r17
- 872:	90 e2       	ldi	r25, 0x20	; 32
- 874:	90 93 a6 06 	sts	0x06A6, r25	; 0x8006a6 <__TEXT_REGION_LENGTH__+0x7006a6>
- 878:	0e 94 4c 06 	call	0xc98	; 0xc98 <nrfspiTransfer>
- 87c:	b8 2e       	mov	r11, r24
- 87e:	ee 24       	eor	r14, r14
- 880:	ea 94       	dec	r14
- 882:	e1 0e       	add	r14, r17
- 884:	11 11       	cpse	r17, r1
- 886:	02 c0       	rjmp	.+4      	; 0x88c <nrfWritePayload+0x48>
- 888:	0e c0       	rjmp	.+28     	; 0x8a6 <nrfWritePayload+0x62>
- 88a:	00 e0       	ldi	r16, 0x00	; 0
- 88c:	e6 01       	movw	r28, r12
- 88e:	f1 2c       	mov	r15, r1
- 890:	8f ef       	ldi	r24, 0xFF	; 255
- 892:	e8 1a       	sub	r14, r24
- 894:	f8 0a       	sbc	r15, r24
- 896:	ec 0c       	add	r14, r12
- 898:	fd 1c       	adc	r15, r13
- 89a:	89 91       	ld	r24, Y+
- 89c:	0e 94 4c 06 	call	0xc98	; 0xc98 <nrfspiTransfer>
- 8a0:	ec 16       	cp	r14, r28
- 8a2:	fd 06       	cpc	r15, r29
- 8a4:	d1 f7       	brne	.-12     	; 0x89a <nrfWritePayload+0x56>
- 8a6:	00 23       	and	r16, r16
- 8a8:	91 f0       	breq	.+36     	; 0x8ce <nrfWritePayload+0x8a>
- 8aa:	c0 2f       	mov	r28, r16
- 8ac:	80 e0       	ldi	r24, 0x00	; 0
- 8ae:	0e 94 4c 06 	call	0xc98	; 0xc98 <nrfspiTransfer>
- 8b2:	c1 50       	subi	r28, 0x01	; 1
- 8b4:	d9 f7       	brne	.-10     	; 0x8ac <nrfWritePayload+0x68>
- 8b6:	0b c0       	rjmp	.+22     	; 0x8ce <nrfWritePayload+0x8a>
- 8b8:	90 e2       	ldi	r25, 0x20	; 32
- 8ba:	90 93 a6 06 	sts	0x06A6, r25	; 0x8006a6 <__TEXT_REGION_LENGTH__+0x7006a6>
- 8be:	0e 94 4c 06 	call	0xc98	; 0xc98 <nrfspiTransfer>
- 8c2:	b8 2e       	mov	r11, r24
- 8c4:	ee 24       	eor	r14, r14
- 8c6:	ea 94       	dec	r14
- 8c8:	e1 0e       	add	r14, r17
- 8ca:	11 11       	cpse	r17, r1
- 8cc:	de cf       	rjmp	.-68     	; 0x88a <nrfWritePayload+0x46>
- 8ce:	80 e2       	ldi	r24, 0x20	; 32
- 8d0:	80 93 a5 06 	sts	0x06A5, r24	; 0x8006a5 <__TEXT_REGION_LENGTH__+0x7006a5>
- 8d4:	8b 2d       	mov	r24, r11
- 8d6:	df 91       	pop	r29
- 8d8:	cf 91       	pop	r28
- 8da:	1f 91       	pop	r17
- 8dc:	0f 91       	pop	r16
- 8de:	ff 90       	pop	r15
- 8e0:	ef 90       	pop	r14
- 8e2:	df 90       	pop	r13
- 8e4:	cf 90       	pop	r12
- 8e6:	bf 90       	pop	r11
- 8e8:	08 95       	ret
+00000882 <nrfWritePayload>:
+ 882:	bf 92       	push	r11
+ 884:	cf 92       	push	r12
+ 886:	df 92       	push	r13
+ 888:	ef 92       	push	r14
+ 88a:	ff 92       	push	r15
+ 88c:	0f 93       	push	r16
+ 88e:	1f 93       	push	r17
+ 890:	cf 93       	push	r28
+ 892:	df 93       	push	r29
+ 894:	6c 01       	movw	r12, r24
+ 896:	84 2f       	mov	r24, r20
+ 898:	c0 91 11 20 	lds	r28, 0x2011	; 0x802011 <fixed_payload_size>
+ 89c:	1c 2f       	mov	r17, r28
+ 89e:	6c 17       	cp	r22, r28
+ 8a0:	08 f4       	brcc	.+2      	; 0x8a4 <nrfWritePayload+0x22>
+ 8a2:	16 2f       	mov	r17, r22
+ 8a4:	90 91 30 20 	lds	r25, 0x2030	; 0x802030 <dynamic_payloads_enabled>
+ 8a8:	91 11       	cpse	r25, r1
+ 8aa:	25 c0       	rjmp	.+74     	; 0x8f6 <nrfWritePayload+0x74>
+ 8ac:	0c 2f       	mov	r16, r28
+ 8ae:	01 1b       	sub	r16, r17
+ 8b0:	90 e2       	ldi	r25, 0x20	; 32
+ 8b2:	90 93 a6 06 	sts	0x06A6, r25	; 0x8006a6 <__TEXT_REGION_LENGTH__+0x7006a6>
+ 8b6:	0e 94 6b 06 	call	0xcd6	; 0xcd6 <nrfspiTransfer>
+ 8ba:	b8 2e       	mov	r11, r24
+ 8bc:	ee 24       	eor	r14, r14
+ 8be:	ea 94       	dec	r14
+ 8c0:	e1 0e       	add	r14, r17
+ 8c2:	11 11       	cpse	r17, r1
+ 8c4:	02 c0       	rjmp	.+4      	; 0x8ca <nrfWritePayload+0x48>
+ 8c6:	0e c0       	rjmp	.+28     	; 0x8e4 <nrfWritePayload+0x62>
+ 8c8:	00 e0       	ldi	r16, 0x00	; 0
+ 8ca:	e6 01       	movw	r28, r12
+ 8cc:	f1 2c       	mov	r15, r1
+ 8ce:	8f ef       	ldi	r24, 0xFF	; 255
+ 8d0:	e8 1a       	sub	r14, r24
+ 8d2:	f8 0a       	sbc	r15, r24
+ 8d4:	ec 0c       	add	r14, r12
+ 8d6:	fd 1c       	adc	r15, r13
+ 8d8:	89 91       	ld	r24, Y+
+ 8da:	0e 94 6b 06 	call	0xcd6	; 0xcd6 <nrfspiTransfer>
+ 8de:	ec 16       	cp	r14, r28
+ 8e0:	fd 06       	cpc	r15, r29
+ 8e2:	d1 f7       	brne	.-12     	; 0x8d8 <nrfWritePayload+0x56>
+ 8e4:	00 23       	and	r16, r16
+ 8e6:	91 f0       	breq	.+36     	; 0x90c <nrfWritePayload+0x8a>
+ 8e8:	c0 2f       	mov	r28, r16
+ 8ea:	80 e0       	ldi	r24, 0x00	; 0
+ 8ec:	0e 94 6b 06 	call	0xcd6	; 0xcd6 <nrfspiTransfer>
+ 8f0:	c1 50       	subi	r28, 0x01	; 1
+ 8f2:	d9 f7       	brne	.-10     	; 0x8ea <nrfWritePayload+0x68>
+ 8f4:	0b c0       	rjmp	.+22     	; 0x90c <nrfWritePayload+0x8a>
+ 8f6:	90 e2       	ldi	r25, 0x20	; 32
+ 8f8:	90 93 a6 06 	sts	0x06A6, r25	; 0x8006a6 <__TEXT_REGION_LENGTH__+0x7006a6>
+ 8fc:	0e 94 6b 06 	call	0xcd6	; 0xcd6 <nrfspiTransfer>
+ 900:	b8 2e       	mov	r11, r24
+ 902:	ee 24       	eor	r14, r14
+ 904:	ea 94       	dec	r14
+ 906:	e1 0e       	add	r14, r17
+ 908:	11 11       	cpse	r17, r1
+ 90a:	de cf       	rjmp	.-68     	; 0x8c8 <nrfWritePayload+0x46>
+ 90c:	80 e2       	ldi	r24, 0x20	; 32
+ 90e:	80 93 a5 06 	sts	0x06A5, r24	; 0x8006a5 <__TEXT_REGION_LENGTH__+0x7006a5>
+ 912:	8b 2d       	mov	r24, r11
+ 914:	df 91       	pop	r29
+ 916:	cf 91       	pop	r28
+ 918:	1f 91       	pop	r17
+ 91a:	0f 91       	pop	r16
+ 91c:	ff 90       	pop	r15
+ 91e:	ef 90       	pop	r14
+ 920:	df 90       	pop	r13
+ 922:	cf 90       	pop	r12
+ 924:	bf 90       	pop	r11
+ 926:	08 95       	ret
 
-000008ea <nrfFlushRx>:
- 8ea:	1f 93       	push	r17
- 8ec:	cf 93       	push	r28
- 8ee:	df 93       	push	r29
- 8f0:	c0 ea       	ldi	r28, 0xA0	; 160
- 8f2:	d6 e0       	ldi	r29, 0x06	; 6
- 8f4:	10 e2       	ldi	r17, 0x20	; 32
- 8f6:	1e 83       	std	Y+6, r17	; 0x06
- 8f8:	82 ee       	ldi	r24, 0xE2	; 226
- 8fa:	0e 94 4c 06 	call	0xc98	; 0xc98 <nrfspiTransfer>
- 8fe:	1d 83       	std	Y+5, r17	; 0x05
- 900:	df 91       	pop	r29
- 902:	cf 91       	pop	r28
- 904:	1f 91       	pop	r17
- 906:	08 95       	ret
-
-00000908 <nrfFlushTx>:
- 908:	1f 93       	push	r17
- 90a:	cf 93       	push	r28
- 90c:	df 93       	push	r29
- 90e:	c0 ea       	ldi	r28, 0xA0	; 160
- 910:	d6 e0       	ldi	r29, 0x06	; 6
- 912:	10 e2       	ldi	r17, 0x20	; 32
- 914:	1e 83       	std	Y+6, r17	; 0x06
- 916:	81 ee       	ldi	r24, 0xE1	; 225
- 918:	0e 94 4c 06 	call	0xc98	; 0xc98 <nrfspiTransfer>
- 91c:	1d 83       	std	Y+5, r17	; 0x05
- 91e:	df 91       	pop	r29
- 920:	cf 91       	pop	r28
- 922:	1f 91       	pop	r17
- 924:	08 95       	ret
-
-00000926 <nrfStartWrite>:
- 926:	0f 93       	push	r16
+00000928 <nrfFlushRx>:
  928:	1f 93       	push	r17
  92a:	cf 93       	push	r28
  92c:	df 93       	push	r29
- 92e:	ec 01       	movw	r28, r24
- 930:	16 2f       	mov	r17, r22
- 932:	04 2f       	mov	r16, r20
- 934:	80 e0       	ldi	r24, 0x00	; 0
- 936:	0e 94 c8 03 	call	0x790	; 0x790 <nrfReadRegister>
- 93a:	81 fd       	sbrc	r24, 1
- 93c:	0d c0       	rjmp	.+26     	; 0x958 <nrfStartWrite+0x32>
- 93e:	68 2f       	mov	r22, r24
- 940:	6e 7f       	andi	r22, 0xFE	; 254
- 942:	62 60       	ori	r22, 0x02	; 2
- 944:	80 e0       	ldi	r24, 0x00	; 0
- 946:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
- 94a:	8f e7       	ldi	r24, 0x7F	; 127
- 94c:	9e e3       	ldi	r25, 0x3E	; 62
- 94e:	01 97       	sbiw	r24, 0x01	; 1
- 950:	f1 f7       	brne	.-4      	; 0x94e <nrfStartWrite+0x28>
- 952:	00 c0       	rjmp	.+0      	; 0x954 <nrfStartWrite+0x2e>
- 954:	00 00       	nop
- 956:	05 c0       	rjmp	.+10     	; 0x962 <nrfStartWrite+0x3c>
- 958:	68 2f       	mov	r22, r24
- 95a:	6e 7f       	andi	r22, 0xFE	; 254
- 95c:	80 e0       	ldi	r24, 0x00	; 0
- 95e:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
- 962:	8f e0       	ldi	r24, 0x0F	; 15
- 964:	94 e0       	ldi	r25, 0x04	; 4
- 966:	01 97       	sbiw	r24, 0x01	; 1
- 968:	f1 f7       	brne	.-4      	; 0x966 <nrfStartWrite+0x40>
- 96a:	00 c0       	rjmp	.+0      	; 0x96c <nrfStartWrite+0x46>
- 96c:	00 00       	nop
- 96e:	40 2f       	mov	r20, r16
- 970:	61 2f       	mov	r22, r17
- 972:	ce 01       	movw	r24, r28
- 974:	0e 94 22 04 	call	0x844	; 0x844 <nrfWritePayload>
- 978:	e0 ea       	ldi	r30, 0xA0	; 160
- 97a:	f6 e0       	ldi	r31, 0x06	; 6
- 97c:	80 e8       	ldi	r24, 0x80	; 128
- 97e:	85 83       	std	Z+5, r24	; 0x05
- 980:	9a e6       	ldi	r25, 0x6A	; 106
- 982:	9a 95       	dec	r25
- 984:	f1 f7       	brne	.-4      	; 0x982 <nrfStartWrite+0x5c>
- 986:	00 c0       	rjmp	.+0      	; 0x988 <nrfStartWrite+0x62>
- 988:	86 83       	std	Z+6, r24	; 0x06
- 98a:	df 91       	pop	r29
- 98c:	cf 91       	pop	r28
- 98e:	1f 91       	pop	r17
- 990:	0f 91       	pop	r16
- 992:	08 95       	ret
+ 92e:	c0 ea       	ldi	r28, 0xA0	; 160
+ 930:	d6 e0       	ldi	r29, 0x06	; 6
+ 932:	10 e2       	ldi	r17, 0x20	; 32
+ 934:	1e 83       	std	Y+6, r17	; 0x06
+ 936:	82 ee       	ldi	r24, 0xE2	; 226
+ 938:	0e 94 6b 06 	call	0xcd6	; 0xcd6 <nrfspiTransfer>
+ 93c:	1d 83       	std	Y+5, r17	; 0x05
+ 93e:	df 91       	pop	r29
+ 940:	cf 91       	pop	r28
+ 942:	1f 91       	pop	r17
+ 944:	08 95       	ret
 
-00000994 <nrfOpenWritingPipe>:
- 994:	cf 93       	push	r28
- 996:	df 93       	push	r29
- 998:	ec 01       	movw	r28, r24
- 99a:	40 91 10 20 	lds	r20, 0x2010	; 0x802010 <addr_width>
- 99e:	bc 01       	movw	r22, r24
- 9a0:	8a e0       	ldi	r24, 0x0A	; 10
- 9a2:	0e 94 da 03 	call	0x7b4	; 0x7b4 <nrfWriteRegisterMulti>
- 9a6:	40 91 10 20 	lds	r20, 0x2010	; 0x802010 <addr_width>
- 9aa:	be 01       	movw	r22, r28
- 9ac:	80 e1       	ldi	r24, 0x10	; 16
- 9ae:	0e 94 da 03 	call	0x7b4	; 0x7b4 <nrfWriteRegisterMulti>
- 9b2:	60 91 11 20 	lds	r22, 0x2011	; 0x802011 <fixed_payload_size>
- 9b6:	60 32       	cpi	r22, 0x20	; 32
- 9b8:	20 f4       	brcc	.+8      	; 0x9c2 <nrfOpenWritingPipe+0x2e>
- 9ba:	81 e1       	ldi	r24, 0x11	; 17
- 9bc:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
- 9c0:	04 c0       	rjmp	.+8      	; 0x9ca <nrfOpenWritingPipe+0x36>
- 9c2:	60 e2       	ldi	r22, 0x20	; 32
- 9c4:	81 e1       	ldi	r24, 0x11	; 17
- 9c6:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
- 9ca:	df 91       	pop	r29
- 9cc:	cf 91       	pop	r28
- 9ce:	08 95       	ret
+00000946 <nrfFlushTx>:
+ 946:	1f 93       	push	r17
+ 948:	cf 93       	push	r28
+ 94a:	df 93       	push	r29
+ 94c:	c0 ea       	ldi	r28, 0xA0	; 160
+ 94e:	d6 e0       	ldi	r29, 0x06	; 6
+ 950:	10 e2       	ldi	r17, 0x20	; 32
+ 952:	1e 83       	std	Y+6, r17	; 0x06
+ 954:	81 ee       	ldi	r24, 0xE1	; 225
+ 956:	0e 94 6b 06 	call	0xcd6	; 0xcd6 <nrfspiTransfer>
+ 95a:	1d 83       	std	Y+5, r17	; 0x05
+ 95c:	df 91       	pop	r29
+ 95e:	cf 91       	pop	r28
+ 960:	1f 91       	pop	r17
+ 962:	08 95       	ret
 
-000009d0 <nrfOpenReadingPipe>:
- 9d0:	0f 93       	push	r16
- 9d2:	1f 93       	push	r17
- 9d4:	cf 93       	push	r28
- 9d6:	df 93       	push	r29
- 9d8:	c8 2f       	mov	r28, r24
- 9da:	8b 01       	movw	r16, r22
- 9dc:	81 11       	cpse	r24, r1
- 9de:	08 c0       	rjmp	.+16     	; 0x9f0 <nrfOpenReadingPipe+0x20>
- 9e0:	40 91 10 20 	lds	r20, 0x2010	; 0x802010 <addr_width>
- 9e4:	50 e0       	ldi	r21, 0x00	; 0
- 9e6:	8b e2       	ldi	r24, 0x2B	; 43
- 9e8:	90 e2       	ldi	r25, 0x20	; 32
- 9ea:	0e 94 6d 06 	call	0xcda	; 0xcda <memcpy>
- 9ee:	04 c0       	rjmp	.+8      	; 0x9f8 <nrfOpenReadingPipe+0x28>
- 9f0:	87 30       	cpi	r24, 0x07	; 7
- 9f2:	78 f5       	brcc	.+94     	; 0xa52 <nrfOpenReadingPipe+0x82>
- 9f4:	82 30       	cpi	r24, 0x02	; 2
- 9f6:	58 f4       	brcc	.+22     	; 0xa0e <nrfOpenReadingPipe+0x3e>
- 9f8:	ec 2f       	mov	r30, r28
- 9fa:	f0 e0       	ldi	r31, 0x00	; 0
- 9fc:	ec 5d       	subi	r30, 0xDC	; 220
- 9fe:	ff 4d       	sbci	r31, 0xDF	; 223
- a00:	40 91 10 20 	lds	r20, 0x2010	; 0x802010 <addr_width>
- a04:	b8 01       	movw	r22, r16
- a06:	80 81       	ld	r24, Z
- a08:	0e 94 da 03 	call	0x7b4	; 0x7b4 <nrfWriteRegisterMulti>
- a0c:	08 c0       	rjmp	.+16     	; 0xa1e <nrfOpenReadingPipe+0x4e>
- a0e:	e8 2f       	mov	r30, r24
- a10:	f0 e0       	ldi	r31, 0x00	; 0
- a12:	ec 5d       	subi	r30, 0xDC	; 220
- a14:	ff 4d       	sbci	r31, 0xDF	; 223
- a16:	41 e0       	ldi	r20, 0x01	; 1
- a18:	80 81       	ld	r24, Z
- a1a:	0e 94 da 03 	call	0x7b4	; 0x7b4 <nrfWriteRegisterMulti>
- a1e:	d0 e0       	ldi	r29, 0x00	; 0
- a20:	fe 01       	movw	r30, r28
- a22:	e2 5e       	subi	r30, 0xE2	; 226
- a24:	ff 4d       	sbci	r31, 0xDF	; 223
- a26:	60 91 11 20 	lds	r22, 0x2011	; 0x802011 <fixed_payload_size>
- a2a:	80 81       	ld	r24, Z
- a2c:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
- a30:	82 e0       	ldi	r24, 0x02	; 2
- a32:	0e 94 c8 03 	call	0x790	; 0x790 <nrfReadRegister>
- a36:	c8 5e       	subi	r28, 0xE8	; 232
- a38:	df 4d       	sbci	r29, 0xDF	; 223
- a3a:	61 e0       	ldi	r22, 0x01	; 1
- a3c:	70 e0       	ldi	r23, 0x00	; 0
- a3e:	08 80       	ld	r0, Y
- a40:	02 c0       	rjmp	.+4      	; 0xa46 <nrfOpenReadingPipe+0x76>
- a42:	66 0f       	add	r22, r22
- a44:	77 1f       	adc	r23, r23
- a46:	0a 94       	dec	r0
- a48:	e2 f7       	brpl	.-8      	; 0xa42 <nrfOpenReadingPipe+0x72>
- a4a:	68 2b       	or	r22, r24
- a4c:	82 e0       	ldi	r24, 0x02	; 2
- a4e:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
- a52:	df 91       	pop	r29
- a54:	cf 91       	pop	r28
- a56:	1f 91       	pop	r17
- a58:	0f 91       	pop	r16
- a5a:	08 95       	ret
+00000964 <nrfStartWrite>:
+ 964:	0f 93       	push	r16
+ 966:	1f 93       	push	r17
+ 968:	cf 93       	push	r28
+ 96a:	df 93       	push	r29
+ 96c:	ec 01       	movw	r28, r24
+ 96e:	16 2f       	mov	r17, r22
+ 970:	04 2f       	mov	r16, r20
+ 972:	80 e0       	ldi	r24, 0x00	; 0
+ 974:	0e 94 e7 03 	call	0x7ce	; 0x7ce <nrfReadRegister>
+ 978:	81 fd       	sbrc	r24, 1
+ 97a:	0d c0       	rjmp	.+26     	; 0x996 <nrfStartWrite+0x32>
+ 97c:	68 2f       	mov	r22, r24
+ 97e:	6e 7f       	andi	r22, 0xFE	; 254
+ 980:	62 60       	ori	r22, 0x02	; 2
+ 982:	80 e0       	ldi	r24, 0x00	; 0
+ 984:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
+ 988:	8f e7       	ldi	r24, 0x7F	; 127
+ 98a:	9e e3       	ldi	r25, 0x3E	; 62
+ 98c:	01 97       	sbiw	r24, 0x01	; 1
+ 98e:	f1 f7       	brne	.-4      	; 0x98c <nrfStartWrite+0x28>
+ 990:	00 c0       	rjmp	.+0      	; 0x992 <nrfStartWrite+0x2e>
+ 992:	00 00       	nop
+ 994:	05 c0       	rjmp	.+10     	; 0x9a0 <nrfStartWrite+0x3c>
+ 996:	68 2f       	mov	r22, r24
+ 998:	6e 7f       	andi	r22, 0xFE	; 254
+ 99a:	80 e0       	ldi	r24, 0x00	; 0
+ 99c:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
+ 9a0:	8f e0       	ldi	r24, 0x0F	; 15
+ 9a2:	94 e0       	ldi	r25, 0x04	; 4
+ 9a4:	01 97       	sbiw	r24, 0x01	; 1
+ 9a6:	f1 f7       	brne	.-4      	; 0x9a4 <nrfStartWrite+0x40>
+ 9a8:	00 c0       	rjmp	.+0      	; 0x9aa <nrfStartWrite+0x46>
+ 9aa:	00 00       	nop
+ 9ac:	40 2f       	mov	r20, r16
+ 9ae:	61 2f       	mov	r22, r17
+ 9b0:	ce 01       	movw	r24, r28
+ 9b2:	0e 94 41 04 	call	0x882	; 0x882 <nrfWritePayload>
+ 9b6:	e0 ea       	ldi	r30, 0xA0	; 160
+ 9b8:	f6 e0       	ldi	r31, 0x06	; 6
+ 9ba:	80 e8       	ldi	r24, 0x80	; 128
+ 9bc:	85 83       	std	Z+5, r24	; 0x05
+ 9be:	9a e6       	ldi	r25, 0x6A	; 106
+ 9c0:	9a 95       	dec	r25
+ 9c2:	f1 f7       	brne	.-4      	; 0x9c0 <nrfStartWrite+0x5c>
+ 9c4:	00 c0       	rjmp	.+0      	; 0x9c6 <nrfStartWrite+0x62>
+ 9c6:	86 83       	std	Z+6, r24	; 0x06
+ 9c8:	df 91       	pop	r29
+ 9ca:	cf 91       	pop	r28
+ 9cc:	1f 91       	pop	r17
+ 9ce:	0f 91       	pop	r16
+ 9d0:	08 95       	ret
 
-00000a5c <nrfToggleFeatures>:
- a5c:	1f 93       	push	r17
- a5e:	cf 93       	push	r28
- a60:	df 93       	push	r29
- a62:	c0 ea       	ldi	r28, 0xA0	; 160
- a64:	d6 e0       	ldi	r29, 0x06	; 6
- a66:	10 e2       	ldi	r17, 0x20	; 32
- a68:	1e 83       	std	Y+6, r17	; 0x06
- a6a:	80 e5       	ldi	r24, 0x50	; 80
- a6c:	0e 94 4c 06 	call	0xc98	; 0xc98 <nrfspiTransfer>
- a70:	83 e7       	ldi	r24, 0x73	; 115
- a72:	0e 94 4c 06 	call	0xc98	; 0xc98 <nrfspiTransfer>
- a76:	1d 83       	std	Y+5, r17	; 0x05
- a78:	df 91       	pop	r29
- a7a:	cf 91       	pop	r28
- a7c:	1f 91       	pop	r17
- a7e:	08 95       	ret
+000009d2 <nrfOpenWritingPipe>:
+ 9d2:	cf 93       	push	r28
+ 9d4:	df 93       	push	r29
+ 9d6:	ec 01       	movw	r28, r24
+ 9d8:	40 91 10 20 	lds	r20, 0x2010	; 0x802010 <addr_width>
+ 9dc:	bc 01       	movw	r22, r24
+ 9de:	8a e0       	ldi	r24, 0x0A	; 10
+ 9e0:	0e 94 f9 03 	call	0x7f2	; 0x7f2 <nrfWriteRegisterMulti>
+ 9e4:	40 91 10 20 	lds	r20, 0x2010	; 0x802010 <addr_width>
+ 9e8:	be 01       	movw	r22, r28
+ 9ea:	80 e1       	ldi	r24, 0x10	; 16
+ 9ec:	0e 94 f9 03 	call	0x7f2	; 0x7f2 <nrfWriteRegisterMulti>
+ 9f0:	60 91 11 20 	lds	r22, 0x2011	; 0x802011 <fixed_payload_size>
+ 9f4:	60 32       	cpi	r22, 0x20	; 32
+ 9f6:	20 f4       	brcc	.+8      	; 0xa00 <nrfOpenWritingPipe+0x2e>
+ 9f8:	81 e1       	ldi	r24, 0x11	; 17
+ 9fa:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
+ 9fe:	04 c0       	rjmp	.+8      	; 0xa08 <nrfOpenWritingPipe+0x36>
+ a00:	60 e2       	ldi	r22, 0x20	; 32
+ a02:	81 e1       	ldi	r24, 0x11	; 17
+ a04:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
+ a08:	df 91       	pop	r29
+ a0a:	cf 91       	pop	r28
+ a0c:	08 95       	ret
 
-00000a80 <nrfEnableDynamicPayloads>:
- a80:	8d e1       	ldi	r24, 0x1D	; 29
- a82:	0e 94 c8 03 	call	0x790	; 0x790 <nrfReadRegister>
- a86:	68 2f       	mov	r22, r24
- a88:	64 60       	ori	r22, 0x04	; 4
- a8a:	8d e1       	ldi	r24, 0x1D	; 29
- a8c:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
- a90:	8d e1       	ldi	r24, 0x1D	; 29
- a92:	0e 94 c8 03 	call	0x790	; 0x790 <nrfReadRegister>
- a96:	81 11       	cpse	r24, r1
- a98:	0a c0       	rjmp	.+20     	; 0xaae <nrfEnableDynamicPayloads+0x2e>
- a9a:	0e 94 2e 05 	call	0xa5c	; 0xa5c <nrfToggleFeatures>
- a9e:	8d e1       	ldi	r24, 0x1D	; 29
- aa0:	0e 94 c8 03 	call	0x790	; 0x790 <nrfReadRegister>
- aa4:	68 2f       	mov	r22, r24
- aa6:	64 60       	ori	r22, 0x04	; 4
- aa8:	8d e1       	ldi	r24, 0x1D	; 29
- aaa:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
- aae:	8c e1       	ldi	r24, 0x1C	; 28
- ab0:	0e 94 c8 03 	call	0x790	; 0x790 <nrfReadRegister>
- ab4:	68 2f       	mov	r22, r24
- ab6:	6f 63       	ori	r22, 0x3F	; 63
- ab8:	8c e1       	ldi	r24, 0x1C	; 28
- aba:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
- abe:	81 e0       	ldi	r24, 0x01	; 1
- ac0:	80 93 30 20 	sts	0x2030, r24	; 0x802030 <dynamic_payloads_enabled>
- ac4:	08 95       	ret
+00000a0e <nrfOpenReadingPipe>:
+ a0e:	0f 93       	push	r16
+ a10:	1f 93       	push	r17
+ a12:	cf 93       	push	r28
+ a14:	df 93       	push	r29
+ a16:	c8 2f       	mov	r28, r24
+ a18:	8b 01       	movw	r16, r22
+ a1a:	81 11       	cpse	r24, r1
+ a1c:	08 c0       	rjmp	.+16     	; 0xa2e <nrfOpenReadingPipe+0x20>
+ a1e:	40 91 10 20 	lds	r20, 0x2010	; 0x802010 <addr_width>
+ a22:	50 e0       	ldi	r21, 0x00	; 0
+ a24:	8b e2       	ldi	r24, 0x2B	; 43
+ a26:	90 e2       	ldi	r25, 0x20	; 32
+ a28:	0e 94 8c 06 	call	0xd18	; 0xd18 <memcpy>
+ a2c:	04 c0       	rjmp	.+8      	; 0xa36 <nrfOpenReadingPipe+0x28>
+ a2e:	87 30       	cpi	r24, 0x07	; 7
+ a30:	78 f5       	brcc	.+94     	; 0xa90 <nrfOpenReadingPipe+0x82>
+ a32:	82 30       	cpi	r24, 0x02	; 2
+ a34:	58 f4       	brcc	.+22     	; 0xa4c <nrfOpenReadingPipe+0x3e>
+ a36:	ec 2f       	mov	r30, r28
+ a38:	f0 e0       	ldi	r31, 0x00	; 0
+ a3a:	ec 5d       	subi	r30, 0xDC	; 220
+ a3c:	ff 4d       	sbci	r31, 0xDF	; 223
+ a3e:	40 91 10 20 	lds	r20, 0x2010	; 0x802010 <addr_width>
+ a42:	b8 01       	movw	r22, r16
+ a44:	80 81       	ld	r24, Z
+ a46:	0e 94 f9 03 	call	0x7f2	; 0x7f2 <nrfWriteRegisterMulti>
+ a4a:	08 c0       	rjmp	.+16     	; 0xa5c <nrfOpenReadingPipe+0x4e>
+ a4c:	e8 2f       	mov	r30, r24
+ a4e:	f0 e0       	ldi	r31, 0x00	; 0
+ a50:	ec 5d       	subi	r30, 0xDC	; 220
+ a52:	ff 4d       	sbci	r31, 0xDF	; 223
+ a54:	41 e0       	ldi	r20, 0x01	; 1
+ a56:	80 81       	ld	r24, Z
+ a58:	0e 94 f9 03 	call	0x7f2	; 0x7f2 <nrfWriteRegisterMulti>
+ a5c:	d0 e0       	ldi	r29, 0x00	; 0
+ a5e:	fe 01       	movw	r30, r28
+ a60:	e2 5e       	subi	r30, 0xE2	; 226
+ a62:	ff 4d       	sbci	r31, 0xDF	; 223
+ a64:	60 91 11 20 	lds	r22, 0x2011	; 0x802011 <fixed_payload_size>
+ a68:	80 81       	ld	r24, Z
+ a6a:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
+ a6e:	82 e0       	ldi	r24, 0x02	; 2
+ a70:	0e 94 e7 03 	call	0x7ce	; 0x7ce <nrfReadRegister>
+ a74:	c8 5e       	subi	r28, 0xE8	; 232
+ a76:	df 4d       	sbci	r29, 0xDF	; 223
+ a78:	61 e0       	ldi	r22, 0x01	; 1
+ a7a:	70 e0       	ldi	r23, 0x00	; 0
+ a7c:	08 80       	ld	r0, Y
+ a7e:	02 c0       	rjmp	.+4      	; 0xa84 <nrfOpenReadingPipe+0x76>
+ a80:	66 0f       	add	r22, r22
+ a82:	77 1f       	adc	r23, r23
+ a84:	0a 94       	dec	r0
+ a86:	e2 f7       	brpl	.-8      	; 0xa80 <nrfOpenReadingPipe+0x72>
+ a88:	68 2b       	or	r22, r24
+ a8a:	82 e0       	ldi	r24, 0x02	; 2
+ a8c:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
+ a90:	df 91       	pop	r29
+ a92:	cf 91       	pop	r28
+ a94:	1f 91       	pop	r17
+ a96:	0f 91       	pop	r16
+ a98:	08 95       	ret
 
-00000ac6 <nrfSetChannel>:
- ac6:	88 23       	and	r24, r24
- ac8:	2c f0       	brlt	.+10     	; 0xad4 <nrfSetChannel+0xe>
- aca:	68 2f       	mov	r22, r24
- acc:	85 e0       	ldi	r24, 0x05	; 5
- ace:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
- ad2:	08 95       	ret
- ad4:	6f e7       	ldi	r22, 0x7F	; 127
- ad6:	85 e0       	ldi	r24, 0x05	; 5
- ad8:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
- adc:	08 95       	ret
+00000a9a <nrfToggleFeatures>:
+ a9a:	1f 93       	push	r17
+ a9c:	cf 93       	push	r28
+ a9e:	df 93       	push	r29
+ aa0:	c0 ea       	ldi	r28, 0xA0	; 160
+ aa2:	d6 e0       	ldi	r29, 0x06	; 6
+ aa4:	10 e2       	ldi	r17, 0x20	; 32
+ aa6:	1e 83       	std	Y+6, r17	; 0x06
+ aa8:	80 e5       	ldi	r24, 0x50	; 80
+ aaa:	0e 94 6b 06 	call	0xcd6	; 0xcd6 <nrfspiTransfer>
+ aae:	83 e7       	ldi	r24, 0x73	; 115
+ ab0:	0e 94 6b 06 	call	0xcd6	; 0xcd6 <nrfspiTransfer>
+ ab4:	1d 83       	std	Y+5, r17	; 0x05
+ ab6:	df 91       	pop	r29
+ ab8:	cf 91       	pop	r28
+ aba:	1f 91       	pop	r17
+ abc:	08 95       	ret
 
-00000ade <nrfSetAutoAck>:
- ade:	88 23       	and	r24, r24
- ae0:	29 f0       	breq	.+10     	; 0xaec <nrfSetAutoAck+0xe>
- ae2:	6f e3       	ldi	r22, 0x3F	; 63
- ae4:	81 e0       	ldi	r24, 0x01	; 1
- ae6:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
- aea:	08 95       	ret
- aec:	60 e0       	ldi	r22, 0x00	; 0
- aee:	81 e0       	ldi	r24, 0x01	; 1
- af0:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
- af4:	08 95       	ret
+00000abe <nrfEnableDynamicPayloads>:
+ abe:	8d e1       	ldi	r24, 0x1D	; 29
+ ac0:	0e 94 e7 03 	call	0x7ce	; 0x7ce <nrfReadRegister>
+ ac4:	68 2f       	mov	r22, r24
+ ac6:	64 60       	ori	r22, 0x04	; 4
+ ac8:	8d e1       	ldi	r24, 0x1D	; 29
+ aca:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
+ ace:	8d e1       	ldi	r24, 0x1D	; 29
+ ad0:	0e 94 e7 03 	call	0x7ce	; 0x7ce <nrfReadRegister>
+ ad4:	81 11       	cpse	r24, r1
+ ad6:	0a c0       	rjmp	.+20     	; 0xaec <nrfEnableDynamicPayloads+0x2e>
+ ad8:	0e 94 4d 05 	call	0xa9a	; 0xa9a <nrfToggleFeatures>
+ adc:	8d e1       	ldi	r24, 0x1D	; 29
+ ade:	0e 94 e7 03 	call	0x7ce	; 0x7ce <nrfReadRegister>
+ ae2:	68 2f       	mov	r22, r24
+ ae4:	64 60       	ori	r22, 0x04	; 4
+ ae6:	8d e1       	ldi	r24, 0x1D	; 29
+ ae8:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
+ aec:	8c e1       	ldi	r24, 0x1C	; 28
+ aee:	0e 94 e7 03 	call	0x7ce	; 0x7ce <nrfReadRegister>
+ af2:	68 2f       	mov	r22, r24
+ af4:	6f 63       	ori	r22, 0x3F	; 63
+ af6:	8c e1       	ldi	r24, 0x1C	; 28
+ af8:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
+ afc:	81 e0       	ldi	r24, 0x01	; 1
+ afe:	80 93 30 20 	sts	0x2030, r24	; 0x802030 <dynamic_payloads_enabled>
+ b02:	08 95       	ret
 
-00000af6 <nrfSetPALevel>:
- af6:	cf 93       	push	r28
- af8:	c8 2f       	mov	r28, r24
- afa:	86 e0       	ldi	r24, 0x06	; 6
- afc:	0e 94 c8 03 	call	0x790	; 0x790 <nrfReadRegister>
- b00:	89 7f       	andi	r24, 0xF9	; 249
- b02:	c6 70       	andi	r28, 0x06	; 6
- b04:	68 2f       	mov	r22, r24
- b06:	6c 2b       	or	r22, r28
- b08:	86 e0       	ldi	r24, 0x06	; 6
- b0a:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
- b0e:	cf 91       	pop	r28
+00000b04 <nrfSetChannel>:
+ b04:	88 23       	and	r24, r24
+ b06:	2c f0       	brlt	.+10     	; 0xb12 <nrfSetChannel+0xe>
+ b08:	68 2f       	mov	r22, r24
+ b0a:	85 e0       	ldi	r24, 0x05	; 5
+ b0c:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
  b10:	08 95       	ret
+ b12:	6f e7       	ldi	r22, 0x7F	; 127
+ b14:	85 e0       	ldi	r24, 0x05	; 5
+ b16:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
+ b1a:	08 95       	ret
 
-00000b12 <nrfSetDataRate>:
- b12:	cf 93       	push	r28
- b14:	c8 2f       	mov	r28, r24
- b16:	86 e0       	ldi	r24, 0x06	; 6
- b18:	0e 94 c8 03 	call	0x790	; 0x790 <nrfReadRegister>
- b1c:	87 7d       	andi	r24, 0xD7	; 215
- b1e:	9c 2f       	mov	r25, r28
- b20:	98 72       	andi	r25, 0x28	; 40
- b22:	68 2f       	mov	r22, r24
- b24:	69 2b       	or	r22, r25
- b26:	86 e0       	ldi	r24, 0x06	; 6
- b28:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
- b2c:	86 e0       	ldi	r24, 0x06	; 6
- b2e:	0e 94 c8 03 	call	0x790	; 0x790 <nrfReadRegister>
- b32:	91 e0       	ldi	r25, 0x01	; 1
- b34:	c8 13       	cpse	r28, r24
- b36:	90 e0       	ldi	r25, 0x00	; 0
- b38:	89 2f       	mov	r24, r25
- b3a:	cf 91       	pop	r28
- b3c:	08 95       	ret
+00000b1c <nrfSetAutoAck>:
+ b1c:	88 23       	and	r24, r24
+ b1e:	29 f0       	breq	.+10     	; 0xb2a <nrfSetAutoAck+0xe>
+ b20:	6f e3       	ldi	r22, 0x3F	; 63
+ b22:	81 e0       	ldi	r24, 0x01	; 1
+ b24:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
+ b28:	08 95       	ret
+ b2a:	60 e0       	ldi	r22, 0x00	; 0
+ b2c:	81 e0       	ldi	r24, 0x01	; 1
+ b2e:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
+ b32:	08 95       	ret
 
-00000b3e <nrfSetCRCLength>:
- b3e:	cf 93       	push	r28
- b40:	c8 2f       	mov	r28, r24
- b42:	80 e0       	ldi	r24, 0x00	; 0
- b44:	0e 94 c8 03 	call	0x790	; 0x790 <nrfReadRegister>
- b48:	83 7f       	andi	r24, 0xF3	; 243
- b4a:	cc 70       	andi	r28, 0x0C	; 12
- b4c:	68 2f       	mov	r22, r24
- b4e:	6c 2b       	or	r22, r28
- b50:	80 e0       	ldi	r24, 0x00	; 0
- b52:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
- b56:	cf 91       	pop	r28
- b58:	08 95       	ret
+00000b34 <nrfSetPALevel>:
+ b34:	cf 93       	push	r28
+ b36:	c8 2f       	mov	r28, r24
+ b38:	86 e0       	ldi	r24, 0x06	; 6
+ b3a:	0e 94 e7 03 	call	0x7ce	; 0x7ce <nrfReadRegister>
+ b3e:	89 7f       	andi	r24, 0xF9	; 249
+ b40:	c6 70       	andi	r28, 0x06	; 6
+ b42:	68 2f       	mov	r22, r24
+ b44:	6c 2b       	or	r22, r28
+ b46:	86 e0       	ldi	r24, 0x06	; 6
+ b48:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
+ b4c:	cf 91       	pop	r28
+ b4e:	08 95       	ret
 
-00000b5a <nrfSetRetries>:
+00000b50 <nrfSetDataRate>:
+ b50:	cf 93       	push	r28
+ b52:	c8 2f       	mov	r28, r24
+ b54:	86 e0       	ldi	r24, 0x06	; 6
+ b56:	0e 94 e7 03 	call	0x7ce	; 0x7ce <nrfReadRegister>
+ b5a:	87 7d       	andi	r24, 0xD7	; 215
+ b5c:	9c 2f       	mov	r25, r28
+ b5e:	98 72       	andi	r25, 0x28	; 40
+ b60:	68 2f       	mov	r22, r24
+ b62:	69 2b       	or	r22, r25
+ b64:	86 e0       	ldi	r24, 0x06	; 6
+ b66:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
+ b6a:	86 e0       	ldi	r24, 0x06	; 6
+ b6c:	0e 94 e7 03 	call	0x7ce	; 0x7ce <nrfReadRegister>
+ b70:	91 e0       	ldi	r25, 0x01	; 1
+ b72:	c8 13       	cpse	r28, r24
+ b74:	90 e0       	ldi	r25, 0x00	; 0
+ b76:	89 2f       	mov	r24, r25
+ b78:	cf 91       	pop	r28
+ b7a:	08 95       	ret
+
+00000b7c <nrfSetCRCLength>:
+ b7c:	cf 93       	push	r28
+ b7e:	c8 2f       	mov	r28, r24
+ b80:	80 e0       	ldi	r24, 0x00	; 0
+ b82:	0e 94 e7 03 	call	0x7ce	; 0x7ce <nrfReadRegister>
+ b86:	83 7f       	andi	r24, 0xF3	; 243
+ b88:	cc 70       	andi	r28, 0x0C	; 12
+ b8a:	68 2f       	mov	r22, r24
+ b8c:	6c 2b       	or	r22, r28
+ b8e:	80 e0       	ldi	r24, 0x00	; 0
+ b90:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
+ b94:	cf 91       	pop	r28
+ b96:	08 95       	ret
+
+00000b98 <nrfSetRetries>:
  * \param   delay   (groupsconfiguration NRF_SETUP_ARD_#US_gc for delay #)
  * \param   retries (groupsconfiguration NRF_SETUP_ARC_#RETRANSMIT_gc for retries #)
  */
 void nrfSetRetries(uint8_t delay, uint8_t retries)
 {
   nrfWriteRegister(REG_SETUP_RETR, (delay|retries));
- b5a:	68 2b       	or	r22, r24
- b5c:	84 e0       	ldi	r24, 0x04	; 4
- b5e:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
- b62:	08 95       	ret
+ b98:	68 2b       	or	r22, r24
+ b9a:	84 e0       	ldi	r24, 0x04	; 4
+ b9c:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
+ ba0:	08 95       	ret
 
-00000b64 <nrfGetMaxTimeout>:
+00000ba2 <nrfGetMaxTimeout>:
  *
  * @return  maximum timeout in us
  */
 
 uint16_t nrfGetMaxTimeout(void){
   uint8_t retries = nrfReadRegister(REG_SETUP_RETR);
- b64:	84 e0       	ldi	r24, 0x04	; 4
- b66:	0e 94 c8 03 	call	0x790	; 0x790 <nrfReadRegister>
+ ba2:	84 e0       	ldi	r24, 0x04	; 4
+ ba4:	0e 94 e7 03 	call	0x7ce	; 0x7ce <nrfReadRegister>
   uint8_t delay   = (retries & NRF_SETUP_ARD_gm) >> NRF_SETUP_ARD_gp;
   uint8_t count   = (retries & NRF_SETUP_ARC_gm) >> NRF_SETUP_ARC_gp;
 
   uint16_t to = 250 * (delay + 1) * (count + 1);
 
   return to ;
- b6a:	28 2f       	mov	r18, r24
- b6c:	22 95       	swap	r18
- b6e:	2f 70       	andi	r18, 0x0F	; 15
- b70:	30 e0       	ldi	r19, 0x00	; 0
- b72:	2f 5f       	subi	r18, 0xFF	; 255
- b74:	3f 4f       	sbci	r19, 0xFF	; 255
- b76:	9a ef       	ldi	r25, 0xFA	; 250
- b78:	92 9f       	mul	r25, r18
- b7a:	a0 01       	movw	r20, r0
- b7c:	93 9f       	mul	r25, r19
- b7e:	50 0d       	add	r21, r0
- b80:	11 24       	eor	r1, r1
- b82:	8f 70       	andi	r24, 0x0F	; 15
- b84:	90 e0       	ldi	r25, 0x00	; 0
- b86:	01 96       	adiw	r24, 0x01	; 1
+ ba8:	28 2f       	mov	r18, r24
+ baa:	22 95       	swap	r18
+ bac:	2f 70       	andi	r18, 0x0F	; 15
+ bae:	30 e0       	ldi	r19, 0x00	; 0
+ bb0:	2f 5f       	subi	r18, 0xFF	; 255
+ bb2:	3f 4f       	sbci	r19, 0xFF	; 255
+ bb4:	9a ef       	ldi	r25, 0xFA	; 250
+ bb6:	92 9f       	mul	r25, r18
+ bb8:	a0 01       	movw	r20, r0
+ bba:	93 9f       	mul	r25, r19
+ bbc:	50 0d       	add	r21, r0
+ bbe:	11 24       	eor	r1, r1
+ bc0:	8f 70       	andi	r24, 0x0F	; 15
+ bc2:	90 e0       	ldi	r25, 0x00	; 0
+ bc4:	01 96       	adiw	r24, 0x01	; 1
 }
- b88:	9c 01       	movw	r18, r24
- b8a:	42 9f       	mul	r20, r18
- b8c:	c0 01       	movw	r24, r0
- b8e:	43 9f       	mul	r20, r19
- b90:	90 0d       	add	r25, r0
- b92:	52 9f       	mul	r21, r18
- b94:	90 0d       	add	r25, r0
- b96:	11 24       	eor	r1, r1
- b98:	08 95       	ret
+ bc6:	9c 01       	movw	r18, r24
+ bc8:	42 9f       	mul	r20, r18
+ bca:	c0 01       	movw	r24, r0
+ bcc:	43 9f       	mul	r20, r19
+ bce:	90 0d       	add	r25, r0
+ bd0:	52 9f       	mul	r21, r18
+ bd2:	90 0d       	add	r25, r0
+ bd4:	11 24       	eor	r1, r1
+ bd6:	08 95       	ret
 
-00000b9a <nrfWaitForAck>:
+00000bd8 <nrfWaitForAck>:
 // from Wouter + nrfGetMaxTimeout()
 // TODO?  iAckTimer zou ook een globale waarde kunnen zijn,
 //        die bij init bepaald of bij setRetries gezet wordt
 //        is nrfFlushRx nodig ??
 uint8_t nrfWaitForAck(void)
 {
- b9a:	cf 93       	push	r28
- b9c:	df 93       	push	r29
+ bd8:	cf 93       	push	r28
+ bda:	df 93       	push	r29
   uint16_t iAckTimer;  // Time-out
   uint8_t  iIRQ = 0;
   uint8_t  iSucces = 0;
 
   iAckTimer = nrfGetMaxTimeout() / 100;
- b9e:	0e 94 b2 05 	call	0xb64	; 0xb64 <nrfGetMaxTimeout>
- ba2:	9c 01       	movw	r18, r24
- ba4:	36 95       	lsr	r19
- ba6:	27 95       	ror	r18
- ba8:	36 95       	lsr	r19
- baa:	27 95       	ror	r18
- bac:	ab e7       	ldi	r26, 0x7B	; 123
- bae:	b4 e1       	ldi	r27, 0x14	; 20
- bb0:	0e 94 5e 06 	call	0xcbc	; 0xcbc <__umulhisi3>
- bb4:	ec 01       	movw	r28, r24
- bb6:	d6 95       	lsr	r29
- bb8:	c7 95       	ror	r28
+ bdc:	0e 94 d1 05 	call	0xba2	; 0xba2 <nrfGetMaxTimeout>
+ be0:	9c 01       	movw	r18, r24
+ be2:	36 95       	lsr	r19
+ be4:	27 95       	ror	r18
+ be6:	36 95       	lsr	r19
+ be8:	27 95       	ror	r18
+ bea:	ab e7       	ldi	r26, 0x7B	; 123
+ bec:	b4 e1       	ldi	r27, 0x14	; 20
+ bee:	0e 94 7d 06 	call	0xcfa	; 0xcfa <__umulhisi3>
+ bf2:	ec 01       	movw	r28, r24
+ bf4:	d6 95       	lsr	r29
+ bf6:	c7 95       	ror	r28
   while (!iIRQ && iAckTimer) {   // Interrupt on TX complete, Maximum retransmits reached, or timer expired
- bba:	20 97       	sbiw	r28, 0x00	; 0
- bbc:	71 f0       	breq	.+28     	; 0xbda <nrfWaitForAck+0x40>
+ bf8:	20 97       	sbiw	r28, 0x00	; 0
+ bfa:	71 f0       	breq	.+28     	; 0xc18 <nrfWaitForAck+0x40>
     iIRQ = nrfReadRegister(REG_STATUS) & (NRF_STATUS_TX_DS_bm|NRF_STATUS_MAX_RT_bm);
- bbe:	87 e0       	ldi	r24, 0x07	; 7
- bc0:	0e 94 c8 03 	call	0x790	; 0x790 <nrfReadRegister>
+ bfc:	87 e0       	ldi	r24, 0x07	; 7
+ bfe:	0e 94 e7 03 	call	0x7ce	; 0x7ce <nrfReadRegister>
     iAckTimer--;
- bc4:	21 97       	sbiw	r28, 0x01	; 1
+ c02:	21 97       	sbiw	r28, 0x01	; 1
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- bc6:	ef e1       	ldi	r30, 0x1F	; 31
- bc8:	f3 e0       	ldi	r31, 0x03	; 3
- bca:	31 97       	sbiw	r30, 0x01	; 1
- bcc:	f1 f7       	brne	.-4      	; 0xbca <nrfWaitForAck+0x30>
- bce:	00 c0       	rjmp	.+0      	; 0xbd0 <nrfWaitForAck+0x36>
- bd0:	00 00       	nop
+ c04:	ef e1       	ldi	r30, 0x1F	; 31
+ c06:	f3 e0       	ldi	r31, 0x03	; 3
+ c08:	31 97       	sbiw	r30, 0x01	; 1
+ c0a:	f1 f7       	brne	.-4      	; 0xc08 <nrfWaitForAck+0x30>
+ c0c:	00 c0       	rjmp	.+0      	; 0xc0e <nrfWaitForAck+0x36>
+ c0e:	00 00       	nop
   uint16_t iAckTimer;  // Time-out
   uint8_t  iIRQ = 0;
   uint8_t  iSucces = 0;
 
   iAckTimer = nrfGetMaxTimeout() / 100;
   while (!iIRQ && iAckTimer) {   // Interrupt on TX complete, Maximum retransmits reached, or timer expired
- bd2:	80 73       	andi	r24, 0x30	; 48
- bd4:	11 f4       	brne	.+4      	; 0xbda <nrfWaitForAck+0x40>
- bd6:	20 97       	sbiw	r28, 0x00	; 0
- bd8:	91 f7       	brne	.-28     	; 0xbbe <nrfWaitForAck+0x24>
+ c10:	80 73       	andi	r24, 0x30	; 48
+ c12:	11 f4       	brne	.+4      	; 0xc18 <nrfWaitForAck+0x40>
+ c14:	20 97       	sbiw	r28, 0x00	; 0
+ c16:	91 f7       	brne	.-28     	; 0xbfc <nrfWaitForAck+0x24>
     iIRQ = nrfReadRegister(REG_STATUS) & (NRF_STATUS_TX_DS_bm|NRF_STATUS_MAX_RT_bm);
     iAckTimer--;
     _delay_us(100);
   }
   iSucces = nrfReadRegister(REG_STATUS) & NRF_STATUS_TX_DS_bm;
- bda:	87 e0       	ldi	r24, 0x07	; 7
- bdc:	0e 94 c8 03 	call	0x790	; 0x790 <nrfReadRegister>
- be0:	c8 2f       	mov	r28, r24
+ c18:	87 e0       	ldi	r24, 0x07	; 7
+ c1a:	0e 94 e7 03 	call	0x7ce	; 0x7ce <nrfReadRegister>
+ c1e:	c8 2f       	mov	r28, r24
 
   nrfFlushRx();       // ??
- be2:	0e 94 75 04 	call	0x8ea	; 0x8ea <nrfFlushRx>
+ c20:	0e 94 94 04 	call	0x928	; 0x928 <nrfFlushRx>
   nrfFlushTx();       // Flush TX FIFO because of MAX_RT
- be6:	0e 94 84 04 	call	0x908	; 0x908 <nrfFlushTx>
+ c24:	0e 94 a3 04 	call	0x946	; 0x946 <nrfFlushTx>
   nrfWriteRegister(REG_STATUS, NRF_STATUS_RX_DR_bm|NRF_STATUS_TX_DS_bm|NRF_STATUS_MAX_RT_bm);
- bea:	60 e7       	ldi	r22, 0x70	; 112
- bec:	87 e0       	ldi	r24, 0x07	; 7
- bee:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
+ c28:	60 e7       	ldi	r22, 0x70	; 112
+ c2a:	87 e0       	ldi	r24, 0x07	; 7
+ c2c:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
 
   return(iSucces);    // Returns 32 on ACK received, 0 on time out
 }
- bf2:	8c 2f       	mov	r24, r28
- bf4:	80 72       	andi	r24, 0x20	; 32
- bf6:	df 91       	pop	r29
- bf8:	cf 91       	pop	r28
- bfa:	08 95       	ret
+ c30:	8c 2f       	mov	r24, r28
+ c32:	80 72       	andi	r24, 0x20	; 32
+ c34:	df 91       	pop	r29
+ c36:	cf 91       	pop	r28
+ c38:	08 95       	ret
 
-00000bfc <nrfWrite>:
+00000c3a <nrfWrite>:
 uint8_t nrfWrite( uint8_t* buf, uint8_t len)
 {
   uint8_t iReturn;
 
   //nrfStartWrite(buf, len, NRF_W_TX_PAYLOAD_NO_ACK);
   nrfStartWrite(buf, len, NRF_W_TX_PAYLOAD);
- bfc:	40 ea       	ldi	r20, 0xA0	; 160
- bfe:	0e 94 93 04 	call	0x926	; 0x926 <nrfStartWrite>
+ c3a:	40 ea       	ldi	r20, 0xA0	; 160
+ c3c:	0e 94 b2 04 	call	0x964	; 0x964 <nrfStartWrite>
 
   iReturn = nrfWaitForAck();  // Wait until packet ACK is received or timed out
- c02:	0e 94 cd 05 	call	0xb9a	; 0xb9a <nrfWaitForAck>
+ c40:	0e 94 ec 05 	call	0xbd8	; 0xbd8 <nrfWaitForAck>
 
   return(iReturn);            // Returns 32 on ACK received, 0 on time out
 }
- c06:	08 95       	ret
+ c44:	08 95       	ret
 
-00000c08 <nrfClearInterruptBits>:
+00000c46 <nrfClearInterruptBits>:
  * \brief   Clear Interrupt Bits
  *
  */
 void nrfClearInterruptBits(void)
 {
   nrfWriteRegister(REG_STATUS, NRF_STATUS_RX_DR_bm | NRF_STATUS_TX_DS_bm | NRF_STATUS_MAX_RT_bm );
- c08:	60 e7       	ldi	r22, 0x70	; 112
- c0a:	87 e0       	ldi	r24, 0x07	; 7
- c0c:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
- c10:	08 95       	ret
+ c46:	60 e7       	ldi	r22, 0x70	; 112
+ c48:	87 e0       	ldi	r24, 0x07	; 7
+ c4a:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
+ c4e:	08 95       	ret
 
-00000c12 <nrfBegin>:
+00000c50 <nrfBegin>:
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- c12:	8f e3       	ldi	r24, 0x3F	; 63
- c14:	9c e9       	ldi	r25, 0x9C	; 156
- c16:	01 97       	sbiw	r24, 0x01	; 1
- c18:	f1 f7       	brne	.-4      	; 0xc16 <nrfBegin+0x4>
- c1a:	00 c0       	rjmp	.+0      	; 0xc1c <nrfBegin+0xa>
- c1c:	00 00       	nop
+ c50:	8f e3       	ldi	r24, 0x3F	; 63
+ c52:	9c e9       	ldi	r25, 0x9C	; 156
+ c54:	01 97       	sbiw	r24, 0x01	; 1
+ c56:	f1 f7       	brne	.-4      	; 0xc54 <nrfBegin+0x4>
+ c58:	00 c0       	rjmp	.+0      	; 0xc5a <nrfBegin+0xa>
+ c5a:	00 00       	nop
  * \param   delay   (groupsconfiguration NRF_SETUP_ARD_#US_gc for delay #)
  * \param   retries (groupsconfiguration NRF_SETUP_ARC_#RETRANSMIT_gc for retries #)
  */
 void nrfSetRetries(uint8_t delay, uint8_t retries)
 {
   nrfWriteRegister(REG_SETUP_RETR, (delay|retries));
- c1e:	6f e5       	ldi	r22, 0x5F	; 95
- c20:	84 e0       	ldi	r24, 0x04	; 4
- c22:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
+ c5c:	6f e5       	ldi	r22, 0x5F	; 95
+ c5e:	84 e0       	ldi	r24, 0x04	; 4
+ c60:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
   // sizes must never be used. See documentation for a more complete explanation.
   //  nrfWriteRegister(REG_SETUP_RETR, NRF_SETUP_ARD_1500US_gc | NRF_SETUP_ARC_15RETRANSMIT_gc );
   nrfSetRetries(NRF_SETUP_ARD_1500US_gc, NRF_SETUP_ARC_15RETRANSMIT_gc);
 
   // Restore our default PA level
   nrfSetPALevel( NRF_RF_SETUP_PWR_0DBM_gc ) ;
- c26:	86 e0       	ldi	r24, 0x06	; 6
- c28:	0e 94 7b 05 	call	0xaf6	; 0xaf6 <nrfSetPALevel>
+ c64:	86 e0       	ldi	r24, 0x06	; 6
+ c66:	0e 94 9a 05 	call	0xb34	; 0xb34 <nrfSetPALevel>
 
   // Determine if this is a p or non-p RF24 module and then
   // reset our data rate back to default value. This works
   // because a non-P variant won't allow the data rate to
   // be set to 250Kbps.
   if( nrfSetDataRate( NRF_RF_SETUP_RF_DR_250K_gc ) )
- c2c:	80 e2       	ldi	r24, 0x20	; 32
- c2e:	0e 94 89 05 	call	0xb12	; 0xb12 <nrfSetDataRate>
- c32:	88 23       	and	r24, r24
- c34:	19 f0       	breq	.+6      	; 0xc3c <nrfBegin+0x2a>
+ c6a:	80 e2       	ldi	r24, 0x20	; 32
+ c6c:	0e 94 a8 05 	call	0xb50	; 0xb50 <nrfSetDataRate>
+ c70:	88 23       	and	r24, r24
+ c72:	19 f0       	breq	.+6      	; 0xc7a <nrfBegin+0x2a>
   {
     p_variant = 1 ;
- c36:	81 e0       	ldi	r24, 0x01	; 1
- c38:	80 93 12 20 	sts	0x2012, r24	; 0x802012 <p_variant>
+ c74:	81 e0       	ldi	r24, 0x01	; 1
+ c76:	80 93 12 20 	sts	0x2012, r24	; 0x802012 <p_variant>
   }
 
   // Then set the data rate to the slowest (and most reliable) speed supported by all
   // hardware.
   nrfSetDataRate( NRF_RF_SETUP_RF_DR_1M_gc );
- c3c:	80 e0       	ldi	r24, 0x00	; 0
- c3e:	0e 94 89 05 	call	0xb12	; 0xb12 <nrfSetDataRate>
+ c7a:	80 e0       	ldi	r24, 0x00	; 0
+ c7c:	0e 94 a8 05 	call	0xb50	; 0xb50 <nrfSetDataRate>
 
   // Initialize CRC and request 2-byte (16bit) CRC
   nrfSetCRCLength( NRF_CONFIG_CRC_16_gc ) ;
- c42:	8c e0       	ldi	r24, 0x0C	; 12
- c44:	0e 94 9f 05 	call	0xb3e	; 0xb3e <nrfSetCRCLength>
+ c80:	8c e0       	ldi	r24, 0x0C	; 12
+ c82:	0e 94 be 05 	call	0xb7c	; 0xb7c <nrfSetCRCLength>
 
   // Disable dynamic payloads, to match dynamic_payloads_enabled setting
   nrfWriteRegister(REG_DYNPD, 0);
- c48:	60 e0       	ldi	r22, 0x00	; 0
- c4a:	8c e1       	ldi	r24, 0x1C	; 28
- c4c:	0e 94 08 04 	call	0x810	; 0x810 <nrfWriteRegister>
+ c86:	60 e0       	ldi	r22, 0x00	; 0
+ c88:	8c e1       	ldi	r24, 0x1C	; 28
+ c8a:	0e 94 27 04 	call	0x84e	; 0x84e <nrfWriteRegister>
 
   // Set up default configuration.  Callers can always change it later.
   // This channel should be universally safe and not bleed over into adjacent
   // spectrum.
   nrfSetChannel(76);
- c50:	8c e4       	ldi	r24, 0x4C	; 76
- c52:	0e 94 63 05 	call	0xac6	; 0xac6 <nrfSetChannel>
+ c8e:	8c e4       	ldi	r24, 0x4C	; 76
+ c90:	0e 94 82 05 	call	0xb04	; 0xb04 <nrfSetChannel>
 
   // Reset current status
   // Notice reset and flush is the last thing we do
   nrfClearInterruptBits();
- c56:	0e 94 04 06 	call	0xc08	; 0xc08 <nrfClearInterruptBits>
+ c94:	0e 94 23 06 	call	0xc46	; 0xc46 <nrfClearInterruptBits>
   nrfFlushRx();
- c5a:	0e 94 75 04 	call	0x8ea	; 0x8ea <nrfFlushRx>
+ c98:	0e 94 94 04 	call	0x928	; 0x928 <nrfFlushRx>
   nrfFlushTx();
- c5e:	0e 94 84 04 	call	0x908	; 0x908 <nrfFlushTx>
- c62:	08 95       	ret
+ c9c:	0e 94 a3 04 	call	0x946	; 0x946 <nrfFlushTx>
+ ca0:	08 95       	ret
 
-00000c64 <nrfspiInit>:
+00000ca2 <nrfspiInit>:
  *  \return void
  */
 
 void nrfspiInit(void)
 {
   PORTC.DIRSET = PIN3_bm;  // MOSI
- c64:	e0 e4       	ldi	r30, 0x40	; 64
- c66:	f6 e0       	ldi	r31, 0x06	; 6
- c68:	88 e0       	ldi	r24, 0x08	; 8
- c6a:	81 83       	std	Z+1, r24	; 0x01
+ ca2:	e0 e4       	ldi	r30, 0x40	; 64
+ ca4:	f6 e0       	ldi	r31, 0x06	; 6
+ ca6:	88 e0       	ldi	r24, 0x08	; 8
+ ca8:	81 83       	std	Z+1, r24	; 0x01
   PORTC.DIRCLR = PIN2_bm;  // MISO
- c6c:	84 e0       	ldi	r24, 0x04	; 4
- c6e:	82 83       	std	Z+2, r24	; 0x02
+ caa:	84 e0       	ldi	r24, 0x04	; 4
+ cac:	82 83       	std	Z+2, r24	; 0x02
   PORTC.DIRSET = PIN1_bm;  // SCK
- c70:	82 e0       	ldi	r24, 0x02	; 2
- c72:	81 83       	std	Z+1, r24	; 0x01
+ cae:	82 e0       	ldi	r24, 0x02	; 2
+ cb0:	81 83       	std	Z+1, r24	; 0x01
   PORTF.DIRSET = PIN5_bm;  // CSN
- c74:	e0 ea       	ldi	r30, 0xA0	; 160
- c76:	f6 e0       	ldi	r31, 0x06	; 6
- c78:	80 e2       	ldi	r24, 0x20	; 32
- c7a:	81 83       	std	Z+1, r24	; 0x01
+ cb2:	e0 ea       	ldi	r30, 0xA0	; 160
+ cb4:	f6 e0       	ldi	r31, 0x06	; 6
+ cb6:	80 e2       	ldi	r24, 0x20	; 32
+ cb8:	81 83       	std	Z+1, r24	; 0x01
   PORTF.DIRCLR = PIN6_bm;  // IRQ
- c7c:	80 e4       	ldi	r24, 0x40	; 64
- c7e:	82 83       	std	Z+2, r24	; 0x02
+ cba:	80 e4       	ldi	r24, 0x40	; 64
+ cbc:	82 83       	std	Z+2, r24	; 0x02
   PORTF.DIRSET = PIN7_bm;  // CE
- c80:	80 e8       	ldi	r24, 0x80	; 128
- c82:	81 83       	std	Z+1, r24	; 0x01
+ cbe:	80 e8       	ldi	r24, 0x80	; 128
+ cc0:	81 83       	std	Z+1, r24	; 0x01
 
   USARTC0.CTRLB = USART_TXEN_bm | USART_RXEN_bm;
- c84:	e0 ea       	ldi	r30, 0xA0	; 160
- c86:	f8 e0       	ldi	r31, 0x08	; 8
- c88:	88 e1       	ldi	r24, 0x18	; 24
- c8a:	84 83       	std	Z+4, r24	; 0x04
+ cc2:	e0 ea       	ldi	r30, 0xA0	; 160
+ cc4:	f8 e0       	ldi	r31, 0x08	; 8
+ cc6:	88 e1       	ldi	r24, 0x18	; 24
+ cc8:	84 83       	std	Z+4, r24	; 0x04
   USARTC0.CTRLC = USART_CMODE_MSPI_gc;
- c8c:	80 ec       	ldi	r24, 0xC0	; 192
- c8e:	85 83       	std	Z+5, r24	; 0x05
+ cca:	80 ec       	ldi	r24, 0xC0	; 192
+ ccc:	85 83       	std	Z+5, r24	; 0x05
 
   USARTC0.BAUDCTRLB = 0;
- c90:	17 82       	std	Z+7, r1	; 0x07
+ cce:	17 82       	std	Z+7, r1	; 0x07
   USARTC0.BAUDCTRLA = 1;   // F_CPU/(2*(BSEL+1))  is 8MHz on 32MHz CPU
- c92:	81 e0       	ldi	r24, 0x01	; 1
- c94:	86 83       	std	Z+6, r24	; 0x06
- c96:	08 95       	ret
+ cd0:	81 e0       	ldi	r24, 0x01	; 1
+ cd2:	86 83       	std	Z+6, r24	; 0x06
+ cd4:	08 95       	ret
 
-00000c98 <nrfspiTransfer>:
+00000cd6 <nrfspiTransfer>:
  *
  *  \return  Data received from slave (status of the nrf24L01p)
  */
 uint8_t nrfspiTransfer(uint8_t iData)
 {
   USARTC0.DATA = iData;
- c98:	80 93 a0 08 	sts	0x08A0, r24	; 0x8008a0 <__TEXT_REGION_LENGTH__+0x7008a0>
+ cd6:	80 93 a0 08 	sts	0x08A0, r24	; 0x8008a0 <__TEXT_REGION_LENGTH__+0x7008a0>
   while( !(USARTC0.STATUS & USART_TXCIF_bm) );
- c9c:	e0 ea       	ldi	r30, 0xA0	; 160
- c9e:	f8 e0       	ldi	r31, 0x08	; 8
- ca0:	81 81       	ldd	r24, Z+1	; 0x01
- ca2:	86 ff       	sbrs	r24, 6
- ca4:	fd cf       	rjmp	.-6      	; 0xca0 <nrfspiTransfer+0x8>
+ cda:	e0 ea       	ldi	r30, 0xA0	; 160
+ cdc:	f8 e0       	ldi	r31, 0x08	; 8
+ cde:	81 81       	ldd	r24, Z+1	; 0x01
+ ce0:	86 ff       	sbrs	r24, 6
+ ce2:	fd cf       	rjmp	.-6      	; 0xcde <nrfspiTransfer+0x8>
   USARTC0.STATUS |= USART_TXCIF_bm;
- ca6:	e0 ea       	ldi	r30, 0xA0	; 160
- ca8:	f8 e0       	ldi	r31, 0x08	; 8
- caa:	81 81       	ldd	r24, Z+1	; 0x01
- cac:	80 64       	ori	r24, 0x40	; 64
- cae:	81 83       	std	Z+1, r24	; 0x01
+ ce4:	e0 ea       	ldi	r30, 0xA0	; 160
+ ce6:	f8 e0       	ldi	r31, 0x08	; 8
+ ce8:	81 81       	ldd	r24, Z+1	; 0x01
+ cea:	80 64       	ori	r24, 0x40	; 64
+ cec:	81 83       	std	Z+1, r24	; 0x01
 
   return USARTC0.DATA;
- cb0:	80 81       	ld	r24, Z
+ cee:	80 81       	ld	r24, Z
 }
- cb2:	08 95       	ret
+ cf0:	08 95       	ret
 
-00000cb4 <init_sleep>:
+00000cf2 <init_sleep>:
 
 #include "sleep.h"
 #include <avr/sleep.h>
 
 void init_sleep(void){
 	SLEEP.CTRL = SLEEP_SMODE_PDOWN_gc;
- cb4:	84 e0       	ldi	r24, 0x04	; 4
- cb6:	80 93 48 00 	sts	0x0048, r24	; 0x800048 <__TEXT_REGION_LENGTH__+0x700048>
- cba:	08 95       	ret
+ cf2:	84 e0       	ldi	r24, 0x04	; 4
+ cf4:	80 93 48 00 	sts	0x0048, r24	; 0x800048 <__TEXT_REGION_LENGTH__+0x700048>
+ cf8:	08 95       	ret
 
-00000cbc <__umulhisi3>:
- cbc:	a2 9f       	mul	r26, r18
- cbe:	b0 01       	movw	r22, r0
- cc0:	b3 9f       	mul	r27, r19
- cc2:	c0 01       	movw	r24, r0
- cc4:	a3 9f       	mul	r26, r19
- cc6:	70 0d       	add	r23, r0
- cc8:	81 1d       	adc	r24, r1
- cca:	11 24       	eor	r1, r1
- ccc:	91 1d       	adc	r25, r1
- cce:	b2 9f       	mul	r27, r18
- cd0:	70 0d       	add	r23, r0
- cd2:	81 1d       	adc	r24, r1
- cd4:	11 24       	eor	r1, r1
- cd6:	91 1d       	adc	r25, r1
- cd8:	08 95       	ret
+00000cfa <__umulhisi3>:
+ cfa:	a2 9f       	mul	r26, r18
+ cfc:	b0 01       	movw	r22, r0
+ cfe:	b3 9f       	mul	r27, r19
+ d00:	c0 01       	movw	r24, r0
+ d02:	a3 9f       	mul	r26, r19
+ d04:	70 0d       	add	r23, r0
+ d06:	81 1d       	adc	r24, r1
+ d08:	11 24       	eor	r1, r1
+ d0a:	91 1d       	adc	r25, r1
+ d0c:	b2 9f       	mul	r27, r18
+ d0e:	70 0d       	add	r23, r0
+ d10:	81 1d       	adc	r24, r1
+ d12:	11 24       	eor	r1, r1
+ d14:	91 1d       	adc	r25, r1
+ d16:	08 95       	ret
 
-00000cda <memcpy>:
- cda:	fb 01       	movw	r30, r22
- cdc:	dc 01       	movw	r26, r24
- cde:	02 c0       	rjmp	.+4      	; 0xce4 <memcpy+0xa>
- ce0:	01 90       	ld	r0, Z+
- ce2:	0d 92       	st	X+, r0
- ce4:	41 50       	subi	r20, 0x01	; 1
- ce6:	50 40       	sbci	r21, 0x00	; 0
- ce8:	d8 f7       	brcc	.-10     	; 0xce0 <memcpy+0x6>
- cea:	08 95       	ret
+00000d18 <memcpy>:
+ d18:	fb 01       	movw	r30, r22
+ d1a:	dc 01       	movw	r26, r24
+ d1c:	02 c0       	rjmp	.+4      	; 0xd22 <memcpy+0xa>
+ d1e:	01 90       	ld	r0, Z+
+ d20:	0d 92       	st	X+, r0
+ d22:	41 50       	subi	r20, 0x01	; 1
+ d24:	50 40       	sbci	r21, 0x00	; 0
+ d26:	d8 f7       	brcc	.-10     	; 0xd1e <memcpy+0x6>
+ d28:	08 95       	ret
 
-00000cec <_exit>:
- cec:	f8 94       	cli
+00000d2a <_exit>:
+ d2a:	f8 94       	cli
 
-00000cee <__stop_program>:
- cee:	ff cf       	rjmp	.-2      	; 0xcee <__stop_program>
+00000d2c <__stop_program>:
+ d2c:	ff cf       	rjmp	.-2      	; 0xd2c <__stop_program>
