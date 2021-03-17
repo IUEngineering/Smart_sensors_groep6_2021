@@ -18,6 +18,8 @@
 #define correct_password 1
 #define added_to_input 0
 
+#define blue_on	TCC0.CCABUF = 250
+#define blue_off TCC0.CCABUF = 0
 
 #define green_on TCF0.CCABUF = 250
 #define green_off TCF0.CCABUF = 0
@@ -29,6 +31,7 @@
 void init_keypad(void);
 void init_timer_F0(void);
 void init_timer_D0(void);
+void init_timer_C0(void);
 void init_LED(void);
 uint8_t what_key_PD(void);
 uint8_t what_key_PE(void);

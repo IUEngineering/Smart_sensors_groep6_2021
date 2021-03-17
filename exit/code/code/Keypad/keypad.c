@@ -62,7 +62,7 @@ void init_keypad(void){
 	
 	//for port A
 	//configure input sense on falling edge
-	PORTA.PIN1CTRL = PORT_ISC_BOTHEDGES_gc;
+	PORTA.PIN1CTRL = PORT_OPC_PULLUP_gc | PORT_ISC_FALLING_gc;
 	
 	//for port D 
 	//use internal pull ups
@@ -90,7 +90,7 @@ void init_keypad(void){
 	
 	//configure PA1 interrupt 0
 	PORTA.INT0MASK = PIN1_bm;
-	PORTA.INTCTRL = PORT_INT0LVL_LO_gc;
+	PORTA.INTCTRL = PORT_INT0LVL_MED_gc;
 	
 	//configure port D interrupt 0
 	PORTD.INT0MASK = 0xFF;
@@ -108,7 +108,6 @@ void init_timer_F0(void){
 	TCF0.CTRLB = TC0_CCAEN_bm | TC0_CCBEN_bm | TC_WGMODE_SS_gc;
 	TCF0.CCA = 0;
 	TCF0.CCB = 0;
-	TCF0.CCC = 10;
 }
 
 void init_timer_D0(void){
@@ -118,9 +117,18 @@ void init_timer_D0(void){
 	TCD0.PER = 65535;  // 2^16 - 1
 }
 
+void init_timer_C0(void){
+	PORTC.DIRSET = PIN0_bm;
+	TCC0.PER = 9999;
+	TCC0.CTRLA = TC_CLKSEL_DIV8_gc;
+	TCC0.CTRLB = TC0_CCAEN_bm | TC_WGMODE_SS_gc;
+	TCC0.CCA = 0;
+}
+
 void init_LED(void){
 	init_timer_D0();
 	init_timer_F0();
+	init_timer_C0();
 }
 
 uint8_t what_key_PD(void){

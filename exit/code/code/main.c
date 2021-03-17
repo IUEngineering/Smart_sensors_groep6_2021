@@ -53,11 +53,16 @@ int main(void)
     {
 		switch (state)
 		{
+			//no one is home
 			case 0:
 				//send over NRF
 				nrfWrite(&state, sizeof(uint8_t));
 				break;
+				red_on;
+				_delay_ms(500);
+				red_off;
 				
+			//people are home
 			case 1:
 				//send over NRF
 				nrfWrite(&state, sizeof(uint8_t));
@@ -68,7 +73,7 @@ int main(void)
 				break;
 		}
 		//enter idle mode
-		SLEEP;
+		//SLEEP;
 	}
 }
 
@@ -160,14 +165,31 @@ ISR(PORTE_INT0_vect){
 	sei();
 }
 
-// ISR for last person out button
+/*!
+ *	\brief Last Person out button
+ */
 ISR(PORTA_INT0_vect){
+	red_on;
+	// open the front door
+	PORTB.OUTSET = PIN0_bm;
+	_delay_ms(500);
+	red_off;
 	// make state 0
 	state = 0;
+	// start timer to close the front door after +-2 seconds
+	TCD0.CTRLA = TC_CLKSEL_DIV1024_gc;
 }
 
+/*!
+ *	\brief Timer function
+ *	
+ *	This Timer overflow interrupt is used to turn off the leds and lock the door after 
+ *	opening the door.
+ *	The timer overflow is programmed to occur after +-2 seconds.
+ */
 ISR(TCD0_OVF_vect){
 	PORTB.OUTCLR = PIN0_bm;
 	red_off;
 	green_off;
 }
+
